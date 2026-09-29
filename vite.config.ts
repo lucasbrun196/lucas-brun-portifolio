@@ -1,0 +1,10 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// Relative base so the build works on GitHub Pages (/lucas-brun-portifolio/) and on Vercel (/).
+export default defineConfig({
+  base: './',
+  plugins: [react()],
+  // The native file watcher sometimes misses edits on Windows; polling keeps HMR reliable.
+  server: { watch: { usePolling: true, interval: 200 } },
+})
