@@ -5,7 +5,6 @@ import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { languages } from '../i18n/translations'
 import ScrambleText from './effects/ScrambleText'
-import { PARTY_EVENT } from './PartyMode'
 
 const SECTIONS = ['about', 'experience', 'education', 'projects', 'skills', 'contact'] as const
 
@@ -95,7 +94,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState<string>('')
   const [menuOpen, setMenuOpen] = useState(false)
-  const logoClicks = useRef<number[]>([])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -121,15 +119,6 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
   }, [menuOpen])
 
-  // Tapping the logo 5 times quickly toggles party mode (mobile-friendly Konami code).
-  const onLogoClick = () => {
-    const now = Date.now()
-    logoClicks.current = [...logoClicks.current.filter((ts) => now - ts < 2000), now]
-    if (logoClicks.current.length >= 5) {
-      logoClicks.current = []
-      window.dispatchEvent(new Event(PARTY_EVENT))
-    }
-  }
 
   return (
     <>
@@ -139,7 +128,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >
-        <a href="#top" className="logo mono" onClick={onLogoClick} aria-label="Lucas Brun">
+        <a href="#top" className="logo mono" aria-label="Lucas Brun">
           <span className="logo-bracket">&lt;</span>
           <span className="glitch" data-text="LB">
             LB

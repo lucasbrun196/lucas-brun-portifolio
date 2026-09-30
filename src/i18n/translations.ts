@@ -23,7 +23,6 @@ const en = {
     menu: 'Menu',
   },
   hero: {
-    hello: "Hey there, I'm",
     iam: "I'm a",
     roles: ['Software Developer', 'Flutter Developer', 'Backend Builder', 'Cloud Tinkerer', 'Competitive Programmer', 'CS Student'],
     tagline:
@@ -31,7 +30,7 @@ const en = {
     ctaProjects: 'See my projects',
     ctaContact: "Let's talk",
     scroll: 'scroll',
-    photoHint: 'Hi! 👋',
+    resume: 'Download resume',
   },
   about: {
     kicker: 'whoami',
@@ -43,10 +42,10 @@ const en = {
     ],
     code: {
       location: 'Passo Fundo, RS, Brazil',
-      role: 'Software Developer @ Stara',
+      role: 'Software Developer',
       education: 'Computer Science @ UPF',
-      focus: ['Telemetry', 'Cloud', 'Flutter', 'APIs'],
-      hobby: 'Programming marathons 🏆',
+      focus: ['AWS', 'Node.js', 'NestJS', 'C++', 'Python', 'Flutter', 'Cloud', 'APIs'],
+      hobby: 'Competitive programming 🏆',
     },
   },
   experience: {
@@ -57,9 +56,10 @@ const en = {
       {
         company: 'Stara S/A',
         role: 'Software Developer',
-        period: 'Present',
+        period: '03/2025 → now',
         location: 'Rio Grande do Sul, Brazil',
         emoji: '🚜',
+        current: true,
         description:
           "I work on Stara's telemetry projects, building software that turns data from agricultural machines into useful information, from web portals and apps to cloud integrations with international companies.",
         highlights: [
@@ -88,6 +88,27 @@ const en = {
         ],
         tags: ['Telemetry', 'Microservices', 'Cloud', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
       },
+      {
+        company: 'Stara S/A',
+        role: 'Software Development Intern',
+        period: '08/2023 → 03/2025',
+        location: 'Rio Grande do Sul, Brazil',
+        emoji: '🌱',
+        current: false,
+        description:
+          'As an intern I worked on projects similar to the ones I build today, on a smaller scale: I developed some apps and APIs, both server based and serverless.',
+        tags: ['Apps', 'APIs', 'Serverless'],
+      },
+      {
+        company: 'UPF, University of Passo Fundo',
+        role: 'Tier 1 (N1) Support Intern',
+        period: '02/2023 → 08/2023',
+        location: 'Passo Fundo, RS, Brazil',
+        emoji: '🖥️',
+        current: false,
+        description: 'I solved tier 1 (N1) support issues across the UPF campus.',
+        tags: ['N1 support', 'Help desk'],
+      },
     ],
   },
   education: {
@@ -108,9 +129,9 @@ const en = {
       '…and much more',
     ],
     marathon: {
-      badge: 'Highlight',
+      badge: 'Competition',
       title: 'SBC Programming Marathon',
-      text: 'I competed in the Brazilian Computer Society (SBC) Programming Marathon, the Brazilian stage of the ICPC, solving algorithmic problems as a team, against the clock.',
+      text: 'I competed in the Brazilian Computer Society (SBC) Programming Marathon, the Brazilian stage of the ICPC, solving algorithmic problems as a team.',
       years: ['2025', '2026'],
     },
     monitor: {
@@ -118,50 +139,24 @@ const en = {
       title: 'Data Structures II TA',
       text: 'I was a teaching assistant for Data Structures II, helping students with the course: explaining concepts, solving exercises together and answering their questions.',
     },
+    workshops: {
+      badge: 'Extracurricular',
+      title: 'Workshops',
+      text: 'I took part in workshops to go beyond the classroom: software testing workshops and workshops to learn new technologies in practice, such as Docker and Spring Boot.',
+      chips: ['Software testing', 'Docker', 'Spring Boot'],
+    },
+    tcc: {
+      badge: 'Capstone project',
+      title: 'Platform for the DSSAT Foundation',
+      text: 'My capstone project (TCC) was the development of a platform for the DSSAT Foundation, where I built the new SBuild with PyQt6. DSSAT is a crop simulation software used by researchers around the world.',
+      chips: ['Python', 'PyQt6', 'DSSAT'],
+    },
   },
   projects: {
     kicker: 'ls ~/projects',
     title: 'Projects',
-    filters: { all: 'All', mobile: 'Mobile & Web', backend: 'Backend', cloud: 'Cloud & DevOps', cs: 'CS & Games' },
-    code: 'Code',
-    live: 'Live demo',
-    featured: 'Featured',
-    more: 'See everything on GitHub',
-    items: {
-      vacation: {
-        title: 'Viagem (Trip Planner)',
-        description:
-          'Shared travel app: itinerary, expenses, receipts and a photo wall in one place. One Flutter codebase for Web, Android and iOS, with Firebase Auth, Firestore and Storage security rules.',
-      },
-      f1: {
-        title: 'F1 API',
-        description:
-          'RESTful API for Formula 1 data (drivers, teams and publications) built with Fastify and PostgreSQL following Clean Architecture, with admin routes protected by tokens and Plop scaffolding.',
-      },
-      spaceBattle: {
-        title: 'Space Battle',
-        description:
-          'Space shooter made for the Computer Graphics & VR course: shoot down enemy aircraft, dodge asteroids and reach the checkpoint across three difficulty levels.',
-      },
-      ubiquitous: {
-        title: 'Ubiquitous APIs',
-        description: 'Multiple Python API instances running side by side and sharing a PostgreSQL database, orchestrated with Docker.',
-      },
-      chat: { title: 'Real Time Flutter Chat', description: 'Chat application with messaging in real time built with Flutter.' },
-      awsBilling: {
-        title: 'AWS Billing Monitor',
-        description: 'Infrastructure as Code with Terraform to monitor AWS billing and keep cloud costs under control.',
-      },
-      competitive: {
-        title: 'Competitive Programming',
-        description: 'My collection of algorithmic solutions to Beecrowd and Codeforces problems, written in C++.',
-      },
-      dataScience: { title: 'Wine Reviews Analysis', description: 'Data science project exploring a Kaggle wine reviews dataset with Python and Jupyter.' },
-      mapsFields: { title: 'Maps Field Drawing', description: 'Flutter Web example that traces polylines on Google Maps to draw and create field areas.' },
-      podcast: { title: 'Podcast Manager API', description: 'An API built with pure TypeScript and Node.js, with no framework, to manage podcasts.' },
-      advicer: { title: 'Advicer App', description: 'Flutter app that consumes an advice API, built with Clean Architecture and Firebase.' },
-      huffman: { title: 'Huffman Tree', description: 'Huffman coding compression implemented from scratch in C++ for the Data Structures course.' },
-    },
+    text: 'All my projects are available on my GitHub: mobile apps, APIs, cloud infrastructure, games and algorithm solutions.',
+    cta: 'See my GitHub',
   },
   skills: {
     kicker: 'cat skills.json',
@@ -170,19 +165,12 @@ const en = {
   },
   contact: {
     kicker: 'ping lucas',
-    title: "Let's build something cool",
-    text: "Have a project, an opportunity or just want to talk about code, Flutter or F1 APIs? My inbox (and my DMs) are always open.",
-    highFive: 'Give me a high five',
-    highFiveCount: 'high fives received',
+    title: 'Contact',
+    copy: 'Copy email',
+    copied: 'Copied!',
   },
   footer: {
-    made: 'Designed & coded by Lucas Brun',
-    location: 'Passo Fundo, RS, Brazil',
-    love: 'Made with ☕, 💜 and std::cout',
-    hint: 'psst… try the Konami code ↑ ↑ ↓ ↓ ← → ← → B A (or tap the logo 5×)',
     top: 'Back to top',
-    partyOn: '🎉 Party mode unlocked!',
-    partyOff: 'Party mode off. Back to work 🤓',
   },
 }
 
@@ -203,7 +191,6 @@ const pt: Dict = {
     menu: 'Menu',
   },
   hero: {
-    hello: 'E aí, eu sou o',
     iam: 'Sou',
     roles: ['Desenvolvedor de Software', 'Desenvolvedor Flutter', 'Construtor de APIs', 'Explorador de Cloud', 'Programador Competitivo', 'Estudante de CC'],
     tagline:
@@ -211,7 +198,7 @@ const pt: Dict = {
     ctaProjects: 'Ver meus projetos',
     ctaContact: 'Vamos conversar',
     scroll: 'role',
-    photoHint: 'Oi! 👋',
+    resume: 'Baixar currículo',
   },
   about: {
     kicker: 'whoami',
@@ -223,10 +210,10 @@ const pt: Dict = {
     ],
     code: {
       location: 'Passo Fundo, RS, Brasil',
-      role: 'Desenvolvedor de Software @ Stara',
+      role: 'Desenvolvedor de Software',
       education: 'Ciência da Computação @ UPF',
-      focus: ['Telemetria', 'Cloud', 'Flutter', 'APIs'],
-      hobby: 'Maratonas de programação 🏆',
+      focus: ['AWS', 'Node.js', 'NestJS', 'C++', 'Python', 'Flutter', 'Cloud', 'APIs'],
+      hobby: 'Programação competitiva 🏆',
     },
   },
   experience: {
@@ -237,9 +224,10 @@ const pt: Dict = {
       {
         company: 'Stara S/A',
         role: 'Desenvolvedor de Software',
-        period: 'Atualmente',
+        period: '03/2025 → hoje',
         location: 'Rio Grande do Sul, Brasil',
         emoji: '🚜',
+        current: true,
         description:
           'Atuo nos projetos de telemetria da Stara, criando software que transforma os dados das máquinas agrícolas em informação útil, de portais web e apps a integrações em nuvem com empresas internacionais.',
         highlights: [
@@ -268,6 +256,27 @@ const pt: Dict = {
         ],
         tags: ['Telemetria', 'Microsserviços', 'Cloud', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
       },
+      {
+        company: 'Stara S/A',
+        role: 'Estagiário de Desenvolvimento',
+        period: '08/2023 → 03/2025',
+        location: 'Rio Grande do Sul, Brasil',
+        emoji: '🌱',
+        current: false,
+        description:
+          'Como estagiário, desenvolvi projetos parecidos com os que desenvolvo hoje, em uma escala menor: criei alguns apps e APIs, tanto server quanto serverless.',
+        tags: ['Apps', 'APIs', 'Serverless'],
+      },
+      {
+        company: 'UPF, Universidade de Passo Fundo',
+        role: 'Estagiário de Suporte N1',
+        period: '02/2023 → 08/2023',
+        location: 'Passo Fundo, RS, Brasil',
+        emoji: '🖥️',
+        current: false,
+        description: 'Resolvia problemas de suporte N1 dentro do campus da UPF.',
+        tags: ['Suporte N1', 'Help desk'],
+      },
     ],
   },
   education: {
@@ -288,9 +297,9 @@ const pt: Dict = {
       '…e muito mais',
     ],
     marathon: {
-      badge: 'Destaque',
+      badge: 'Competição',
       title: 'Maratona de Programação da SBC',
-      text: 'Participei da Maratona de Programação da Sociedade Brasileira de Computação (SBC), a etapa brasileira do ICPC, resolvendo problemas de algoritmos em equipe, contra o relógio.',
+      text: 'Participei da Maratona de Programação da Sociedade Brasileira de Computação (SBC), a etapa brasileira do ICPC, resolvendo problemas de algoritmos em equipe.',
       years: ['2025', '2026'],
     },
     monitor: {
@@ -298,50 +307,24 @@ const pt: Dict = {
       title: 'Monitor de Estruturas de Dados II',
       text: 'Fui monitor da disciplina de Estruturas de Dados II, ajudando os alunos com a matéria: explicando conceitos, resolvendo exercícios juntos e tirando dúvidas.',
     },
+    workshops: {
+      badge: 'Extracurricular',
+      title: 'Oficinas',
+      text: 'Participei de oficinas para ir além da sala de aula: oficinas de testes de software e oficinas para aprender novas tecnologias na prática, como Docker e Spring Boot.',
+      chips: ['Testes de software', 'Docker', 'Spring Boot'],
+    },
+    tcc: {
+      badge: 'TCC',
+      title: 'Plataforma para a Fundação DSSAT',
+      text: 'Meu TCC foi o desenvolvimento de uma plataforma para a Fundação DSSAT, onde construí o novo SBuild em PyQt6. O DSSAT é um software de simulação de culturas agrícolas usado por pesquisadores do mundo todo.',
+      chips: ['Python', 'PyQt6', 'DSSAT'],
+    },
   },
   projects: {
     kicker: 'ls ~/projetos',
     title: 'Projetos',
-    filters: { all: 'Todos', mobile: 'Mobile & Web', backend: 'Backend', cloud: 'Cloud & DevOps', cs: 'CC & Jogos' },
-    code: 'Código',
-    live: 'Ver online',
-    featured: 'Destaque',
-    more: 'Ver tudo no GitHub',
-    items: {
-      vacation: {
-        title: 'Viagem (Planejador de Viagens)',
-        description:
-          'App de viagem compartilhada: roteiro, gastos, comprovantes e mural de fotos em um só lugar. Uma base Flutter para Web, Android e iOS, com Firebase Auth, Firestore e regras de segurança no Storage.',
-      },
-      f1: {
-        title: 'F1 API',
-        description:
-          'API REST de dados da Fórmula 1 (pilotos, equipes e publicações) feita com Fastify e PostgreSQL seguindo Clean Architecture, com rotas de admin protegidas por token e scaffolding com Plop.',
-      },
-      spaceBattle: {
-        title: 'Space Battle',
-        description:
-          'Jogo de nave feito para a disciplina de Computação Gráfica e RV: derrube aeronaves inimigas, desvie dos asteroides e chegue ao checkpoint em três níveis de dificuldade.',
-      },
-      ubiquitous: {
-        title: 'Ubiquitous APIs',
-        description: 'Várias instâncias de API em Python rodando lado a lado e compartilhando um banco PostgreSQL, orquestradas com Docker.',
-      },
-      chat: { title: 'Chat em Tempo Real', description: 'Aplicativo de chat com mensagens em tempo real feito com Flutter.' },
-      awsBilling: {
-        title: 'AWS Billing Monitor',
-        description: 'Infraestrutura como código com Terraform para monitorar o faturamento da AWS e manter os custos sob controle.',
-      },
-      competitive: {
-        title: 'Programação Competitiva',
-        description: 'Minha coleção de soluções de algoritmos para problemas do Beecrowd e do Codeforces, escritas em C++.',
-      },
-      dataScience: { title: 'Análise de Vinhos', description: 'Projeto de ciência de dados explorando uma base de avaliações de vinhos do Kaggle com Python e Jupyter.' },
-      mapsFields: { title: 'Desenho de Talhões no Maps', description: 'Exemplo em Flutter Web que traça polilinhas no Google Maps para desenhar e criar áreas de talhões.' },
-      podcast: { title: 'Podcast Manager API', description: 'API feita com TypeScript e Node.js puros, sem framework, para gerenciar podcasts.' },
-      advicer: { title: 'Advicer App', description: 'App Flutter que consome uma API de conselhos, feito com Clean Architecture e Firebase.' },
-      huffman: { title: 'Árvore de Huffman', description: 'Compressão com codificação de Huffman implementada do zero em C++ para a disciplina de Estruturas de Dados.' },
-    },
+    text: 'Todos os meus projetos estão disponíveis no meu GitHub: apps mobile, APIs, infraestrutura em nuvem, jogos e soluções de algoritmos.',
+    cta: 'Ver meu GitHub',
   },
   skills: {
     kicker: 'cat skills.json',
@@ -350,19 +333,12 @@ const pt: Dict = {
   },
   contact: {
     kicker: 'ping lucas',
-    title: 'Bora construir algo legal',
-    text: 'Tem um projeto, uma oportunidade ou só quer trocar uma ideia sobre código, Flutter ou APIs de F1? Minha caixa de entrada (e minhas DMs) estão sempre abertas.',
-    highFive: 'Me dá um toca aqui',
-    highFiveCount: 'toca aqui recebidos',
+    title: 'Contato',
+    copy: 'Copiar email',
+    copied: 'Copiado!',
   },
   footer: {
-    made: 'Criado e codificado por Lucas Brun',
-    location: 'Passo Fundo, RS, Brasil',
-    love: 'Feito com ☕, 💜 e std::cout',
-    hint: 'psiu… tente o código Konami ↑ ↑ ↓ ↓ ← → ← → B A (ou toque 5× no logo)',
     top: 'Voltar ao topo',
-    partyOn: '🎉 Modo festa desbloqueado!',
-    partyOff: 'Modo festa desligado. De volta ao trabalho 🤓',
   },
 }
 
@@ -381,7 +357,6 @@ const es: Dict = {
     menu: 'Menú',
   },
   hero: {
-    hello: '¡Hola! Soy',
     iam: 'Soy',
     roles: ['Desarrollador de Software', 'Desarrollador Flutter', 'Constructor de APIs', 'Explorador de la Nube', 'Programador Competitivo', 'Estudiante de CC'],
     tagline:
@@ -389,7 +364,7 @@ const es: Dict = {
     ctaProjects: 'Ver mis proyectos',
     ctaContact: 'Hablemos',
     scroll: 'desliza',
-    photoHint: '¡Hola! 👋',
+    resume: 'Descargar currículum',
   },
   about: {
     kicker: 'whoami',
@@ -401,10 +376,10 @@ const es: Dict = {
     ],
     code: {
       location: 'Passo Fundo, RS, Brasil',
-      role: 'Desarrollador de Software @ Stara',
+      role: 'Desarrollador de Software',
       education: 'Ciencias de la Computación @ UPF',
-      focus: ['Telemetría', 'Cloud', 'Flutter', 'APIs'],
-      hobby: 'Maratones de programación 🏆',
+      focus: ['AWS', 'Node.js', 'NestJS', 'C++', 'Python', 'Flutter', 'Cloud', 'APIs'],
+      hobby: 'Programación competitiva 🏆',
     },
   },
   experience: {
@@ -415,9 +390,10 @@ const es: Dict = {
       {
         company: 'Stara S/A',
         role: 'Desarrollador de Software',
-        period: 'Actualidad',
+        period: '03/2025 → hoy',
         location: 'Rio Grande do Sul, Brasil',
         emoji: '🚜',
+        current: true,
         description:
           'Trabajo en los proyectos de telemetría de Stara, creando software que convierte los datos de las máquinas agrícolas en información útil, desde portales web y apps hasta integraciones en la nube con empresas internacionales.',
         highlights: [
@@ -446,6 +422,27 @@ const es: Dict = {
         ],
         tags: ['Telemetría', 'Microservicios', 'Cloud', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
       },
+      {
+        company: 'Stara S/A',
+        role: 'Pasante de Desarrollo',
+        period: '08/2023 → 03/2025',
+        location: 'Rio Grande do Sul, Brasil',
+        emoji: '🌱',
+        current: false,
+        description:
+          'Como pasante, desarrollé proyectos parecidos a los que desarrollo hoy, en una escala menor: creé algunas apps y APIs, tanto server como serverless.',
+        tags: ['Apps', 'APIs', 'Serverless'],
+      },
+      {
+        company: 'UPF, Universidad de Passo Fundo',
+        role: 'Pasante de Soporte N1',
+        period: '02/2023 → 08/2023',
+        location: 'Passo Fundo, RS, Brasil',
+        emoji: '🖥️',
+        current: false,
+        description: 'Resolvía problemas de soporte N1 dentro del campus de la UPF.',
+        tags: ['Soporte N1', 'Help desk'],
+      },
     ],
   },
   education: {
@@ -466,9 +463,9 @@ const es: Dict = {
       '…y mucho más',
     ],
     marathon: {
-      badge: 'Destacado',
+      badge: 'Competición',
       title: 'Maratón de Programación de la SBC',
-      text: 'Participé en la Maratón de Programación de la Sociedad Brasileña de Computación (SBC), la etapa brasileña del ICPC, resolviendo problemas de algoritmos en equipo, contra el reloj.',
+      text: 'Participé en la Maratón de Programación de la Sociedad Brasileña de Computación (SBC), la etapa brasileña del ICPC, resolviendo problemas de algoritmos en equipo.',
       years: ['2025', '2026'],
     },
     monitor: {
@@ -476,50 +473,24 @@ const es: Dict = {
       title: 'Ayudante de Estructuras de Datos II',
       text: 'Fui ayudante (monitor) de la materia Estructuras de Datos II, apoyando a los alumnos: explicando conceptos, resolviendo ejercicios juntos y aclarando dudas.',
     },
+    workshops: {
+      badge: 'Extracurricular',
+      title: 'Talleres',
+      text: 'Participé en talleres para ir más allá del aula: talleres de pruebas de software y talleres para aprender nuevas tecnologías en la práctica, como Docker y Spring Boot.',
+      chips: ['Pruebas de software', 'Docker', 'Spring Boot'],
+    },
+    tcc: {
+      badge: 'Trabajo final',
+      title: 'Plataforma para la Fundación DSSAT',
+      text: 'Mi trabajo final de carrera (TCC) fue el desarrollo de una plataforma para la Fundación DSSAT, donde construí el nuevo SBuild con PyQt6. DSSAT es un software de simulación de cultivos usado por investigadores de todo el mundo.',
+      chips: ['Python', 'PyQt6', 'DSSAT'],
+    },
   },
   projects: {
     kicker: 'ls ~/proyectos',
     title: 'Proyectos',
-    filters: { all: 'Todos', mobile: 'Móvil y Web', backend: 'Backend', cloud: 'Nube y DevOps', cs: 'CC y Juegos' },
-    code: 'Código',
-    live: 'Ver demo',
-    featured: 'Destacado',
-    more: 'Ver todo en GitHub',
-    items: {
-      vacation: {
-        title: 'Viagem (Planificador de Viajes)',
-        description:
-          'App de viajes compartidos: itinerario, gastos, comprobantes y muro de fotos en un solo lugar. Una base Flutter para Web, Android e iOS, con Firebase Auth, Firestore y reglas de seguridad en Storage.',
-      },
-      f1: {
-        title: 'F1 API',
-        description:
-          'API REST de datos de Fórmula 1 (pilotos, equipos y publicaciones) hecha con Fastify y PostgreSQL siguiendo Clean Architecture, con rutas de admin protegidas por token y scaffolding con Plop.',
-      },
-      spaceBattle: {
-        title: 'Space Battle',
-        description:
-          'Juego de naves hecho para la materia de Computación Gráfica y RV: derriba aeronaves enemigas, esquiva asteroides y llega al checkpoint en tres niveles de dificultad.',
-      },
-      ubiquitous: {
-        title: 'Ubiquitous APIs',
-        description: 'Varias instancias de API en Python funcionando en paralelo y compartiendo una base PostgreSQL, orquestadas con Docker.',
-      },
-      chat: { title: 'Chat en Tiempo Real', description: 'Aplicación de chat con mensajes en tiempo real hecha con Flutter.' },
-      awsBilling: {
-        title: 'AWS Billing Monitor',
-        description: 'Infraestructura como código con Terraform para monitorear la facturación de AWS y mantener los costos bajo control.',
-      },
-      competitive: {
-        title: 'Programación Competitiva',
-        description: 'Mi colección de soluciones algorítmicas a problemas de Beecrowd y Codeforces, escritas en C++.',
-      },
-      dataScience: { title: 'Análisis de Vinos', description: 'Proyecto de ciencia de datos que explora un dataset de reseñas de vinos de Kaggle con Python y Jupyter.' },
-      mapsFields: { title: 'Dibujo de Campos en Maps', description: 'Ejemplo en Flutter Web que traza polilíneas en Google Maps para dibujar y crear áreas de campo.' },
-      podcast: { title: 'Podcast Manager API', description: 'API hecha con TypeScript y Node.js puros, sin framework, para gestionar podcasts.' },
-      advicer: { title: 'Advicer App', description: 'App Flutter que consume una API de consejos, hecha con Clean Architecture y Firebase.' },
-      huffman: { title: 'Árbol de Huffman', description: 'Compresión con codificación de Huffman implementada desde cero en C++ para la materia de Estructuras de Datos.' },
-    },
+    text: 'Todos mis proyectos están disponibles en mi GitHub: apps móviles, APIs, infraestructura en la nube, juegos y soluciones de algoritmos.',
+    cta: 'Ver mi GitHub',
   },
   skills: {
     kicker: 'cat skills.json',
@@ -528,19 +499,12 @@ const es: Dict = {
   },
   contact: {
     kicker: 'ping lucas',
-    title: 'Construyamos algo genial',
-    text: '¿Tienes un proyecto, una oportunidad o solo quieres hablar de código, Flutter o APIs de F1? Mi bandeja de entrada (y mis DMs) siempre están abiertas.',
-    highFive: 'Choca esos cinco',
-    highFiveCount: 'choca esos cinco recibidos',
+    title: 'Contacto',
+    copy: 'Copiar email',
+    copied: '¡Copiado!',
   },
   footer: {
-    made: 'Diseñado y programado por Lucas Brun',
-    location: 'Passo Fundo, RS, Brasil',
-    love: 'Hecho con ☕, 💜 y std::cout',
-    hint: 'psst… prueba el código Konami ↑ ↑ ↓ ↓ ← → ← → B A (o toca el logo 5×)',
     top: 'Volver arriba',
-    partyOn: '🎉 ¡Modo fiesta desbloqueado!',
-    partyOff: 'Modo fiesta apagado. De vuelta al trabajo 🤓',
   },
 }
 

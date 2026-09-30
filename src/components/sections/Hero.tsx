@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { FiArrowRight, FiSend } from 'react-icons/fi'
+import { FiArrowRight, FiDownload, FiSend } from 'react-icons/fi'
 import { SiCplusplus, SiFlutter, SiNodedotjs, SiTerraform, SiTypescript } from 'react-icons/si'
 import { FaAws } from 'react-icons/fa6'
 import { useLanguage } from '../../context/LanguageContext'
-import { profilePhoto, socials } from '../../data/profile'
+import { profilePhoto, resumeFor, socials } from '../../data/profile'
 import Magnetic from '../effects/Magnetic'
 import Typewriter from '../effects/Typewriter'
 
@@ -12,7 +12,6 @@ const ORBIT = [SiFlutter, SiTypescript, SiCplusplus, FaAws, SiNodedotjs, SiTerra
 const NAME = 'Lucas Brun'
 
 function ProfilePhoto() {
-  const { t } = useLanguage()
   const [failed, setFailed] = useState(false)
 
   return (
@@ -34,7 +33,6 @@ function ProfilePhoto() {
           <img src={`${import.meta.env.BASE_URL}${profilePhoto}`} alt="Lucas Brun" onError={() => setFailed(true)} />
         )}
       </div>
-      <span className="photo-hi">{t.hero.photoHint}</span>
       <div className="orbit" style={{ ['--n' as string]: ORBIT.length }} aria-hidden="true">
         {ORBIT.map((Icon, i) => (
           <span key={i} className="orbit-item" style={{ ['--i' as string]: i }}>
@@ -49,7 +47,8 @@ function ProfilePhoto() {
 }
 
 export default function Hero({ ready }: { ready: boolean }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  const resume = resumeFor(lang)
   const show = ready ? 'show' : 'hidden'
 
   const container = {
@@ -72,10 +71,6 @@ export default function Hero({ ready }: { ready: boolean }) {
 
       <motion.div className="hero-content container" variants={container} initial="hidden" animate={show}>
         <div className="hero-text">
-          <motion.p variants={item} className="hero-hello">
-            <span className="wave">👋</span> {t.hero.hello}
-          </motion.p>
-
           <motion.h1 variants={item} className="hero-name" aria-label={NAME}>
             {NAME.split('').map((char, i) =>
               char === ' ' ? (
@@ -115,6 +110,12 @@ export default function Hero({ ready }: { ready: boolean }) {
               <a href="#contact" className="btn btn-ghost">
                 <span>{t.hero.ctaContact}</span>
                 <FiSend />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href={resume.href} download={resume.file} className="btn btn-ghost">
+                <span>{t.hero.resume}</span>
+                <FiDownload className="btn-download" />
               </a>
             </Magnetic>
           </motion.div>

@@ -1,47 +1,23 @@
-import { motion } from 'framer-motion'
-import { useState, type MouseEvent } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useState } from 'react'
+import { FiCheck, FiCopy, FiDownload, FiMail } from 'react-icons/fi'
 import { useLanguage } from '../../context/LanguageContext'
-import { socials } from '../../data/profile'
+import { email, resumeFor, socials } from '../../data/profile'
 import Magnetic from '../effects/Magnetic'
 import SectionTitle from '../SectionTitle'
 
-const HANDS = ['🙌', '✋', '🤚', '👏', '💜', '⚡']
-
-function readHighFives() {
-  try {
-    return Number(localStorage.getItem('high-fives')) || 0
-  } catch {
-    return 0
-  }
-}
-
 export default function Contact() {
-  const { t } = useLanguage()
-  const [count, setCount] = useState(readHighFives)
-  const [bump, setBump] = useState(0)
+  const { t, lang } = useLanguage()
+  const resume = resumeFor(lang)
+  const [copied, setCopied] = useState(false)
 
-  const highFive = (e: MouseEvent<HTMLButtonElement>) => {
-    const next = count + 1
-    setCount(next)
-    setBump((b) => b + 1)
+  const copyEmail = async () => {
     try {
-      localStorage.setItem('high-fives', String(next))
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
     } catch {
-      /* storage unavailable */
-    }
-    // Pop a few floating hands from the button.
-    const rect = e.currentTarget.getBoundingClientRect()
-    for (let i = 0; i < 6; i++) {
-      const hand = document.createElement('span')
-      hand.className = 'float-hand'
-      hand.textContent = HANDS[Math.floor(Math.random() * HANDS.length)]
-      hand.style.left = `${rect.left + rect.width / 2}px`
-      hand.style.top = `${rect.top}px`
-      hand.style.setProperty('--dx', `${(Math.random() - 0.5) * 180}px`)
-      hand.style.setProperty('--rot', `${(Math.random() - 0.5) * 80}deg`)
-      hand.style.animationDelay = `${i * 0.04}s`
-      document.body.appendChild(hand)
-      window.setTimeout(() => hand.remove(), 1400)
+      /* clipboard unavailable: the mailto link still works */
     }
   }
 
@@ -56,7 +32,41 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="contact-text">{t.contact.text}</p>
+          <div className="email-row">
+            <Magnetic strength={0.25}>
+              <a href={`mailto:${email}`} className="email-link">
+                <FiMail className="email-icon" />
+                <span>{email}</span>
+              </a>
+            </Magnetic>
+            <button className="icon-btn copy-btn" onClick={copyEmail} aria-label={t.contact.copy} title={t.contact.copy}>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={copied ? 'ok' : 'copy'}
+                  className="icon-wrap"
+                  initial={{ scale: 0, rotate: -90 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  exit={{ scale: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {copied ? <FiCheck /> : <FiCopy />}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+            <AnimatePresence>
+              {copied && (
+                <motion.span
+                  className="copied-hint mono"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  role="status"
+                >
+                  {t.contact.copied}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </div>
           <div className="contact-links">
             {socials.map(({ label, href, icon: Icon }) => (
               <Magnetic key={label} strength={0.4}>
@@ -66,14 +76,12 @@ export default function Contact() {
                 </a>
               </Magnetic>
             ))}
-          </div>
-          <div className="high-five">
-            <motion.button className="btn btn-primary" onClick={highFive} whileTap={{ scale: 0.9, rotate: -6 }}>
-              <span>{t.contact.highFive}</span> <span className="hand">🙌</span>
-            </motion.button>
-            <motion.span key={bump} className="high-five-count mono" initial={{ scale: 1.6 }} animate={{ scale: 1 }}>
-              {count} {t.contact.highFiveCount}
-            </motion.span>
+            <Magnetic strength={0.4}>
+              <a href={resume.href} download={resume.file} className="contact-link">
+                <FiDownload />
+                <span>{t.hero.resume}</span>
+              </a>
+            </Magnetic>
           </div>
         </motion.div>
       </div>

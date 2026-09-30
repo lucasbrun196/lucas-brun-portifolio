@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Relative base so the build works on GitHub Pages (/lucas-brun-portifolio/) and on Vercel (/).
+// Relative base: the build works at the domain root (Vercel) or under any subpath.
 export default defineConfig({
   base: './',
   plugins: [react()],

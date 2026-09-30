@@ -3,7 +3,6 @@ import { useCallback, useState } from 'react'
 import Loader from './components/Loader'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import PartyMode from './components/PartyMode'
 import ParticlesBackground from './components/effects/ParticlesBackground'
 import CustomCursor from './components/effects/CustomCursor'
 import ClickSparks from './components/effects/ClickSparks'
@@ -55,7 +54,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <PartyMode />
     </>
   )
 }

@@ -17,24 +17,32 @@ Production build: `npm run build` (output in `dist/`).
 | What | File |
 |---|---|
 | All texts (EN / PT / ES): about, experience, education, project descriptions… | `src/i18n/translations.ts` |
-| Projects (links, tech, category, colors), skills and social links | `src/data/profile.ts` |
+| Skills, email and social links | `src/data/profile.ts` |
 | Profile photo | put it at `public/profile.jpg` (the initials "LB" show until then) |
 | Colors / theme tokens | top of `src/styles/global.css` |
 
-To add an internship or another job, add an item to `experience.items` in each language in `translations.ts`.
+To add another job to the experience timeline, add an item to `experience.items` (newest first) in each language in `translations.ts`.
 
 ## Effects
 
 Particle constellation that reacts to the mouse · custom neon cursor · click sparks · circular theme transition ·
 glitch and scramble text · bouncy name letters · typewriter roles · morphing photo with orbiting tech icons ·
-synthwave grid · magnetic buttons · 3D tilt cards with spotlight · flip cards · scroll-drawn timeline ·
-animated project filters · skill marquee · high-five counter · rocket back-to-top.
-
-Easter egg: Konami code `↑ ↑ ↓ ↓ ← → ← → B A` (or tap the logo 5×) turns on party mode 🎉
+synthwave grid · magnetic buttons · 3D tilt cards with spotlight · scroll drawn experience timeline ·
+copy email button · resume download in the visitor's language · arrow back to top.
 
 All animations respect `prefers-reduced-motion`.
 
-## Deploy
+## Deploy (Vercel)
 
-- **GitHub Pages**: enable *Settings → Pages → Source: GitHub Actions*; every push to `main` deploys via `.github/workflows/deploy.yml`.
-- **Vercel**: import the repo, framework preset *Vite*, no extra config.
+Settings live in `vercel.json` (build command, output folder, cache and security headers) and Node is pinned to 22.x in `package.json`.
+
+**From the dashboard (recommended):** on [vercel.com/new](https://vercel.com/new), import `lucasbrun196/lucas-brun-portifolio` and click *Deploy*. Every push to `main` then publishes to production, and every other branch gets its own preview URL.
+
+**From the terminal:**
+
+```bash
+npx vercel          # first run: log in and link the project (creates a preview)
+npx vercel --prod   # publish to production
+```
+
+Resume PDFs are in `public/`; replace them keeping the same file names to update what visitors download.
