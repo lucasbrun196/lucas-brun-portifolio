@@ -1,10 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { FiGlobe, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
+import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { languages } from '../i18n/translations'
-import ScrambleText from './effects/ScrambleText'
 
 const SECTIONS = ['about', 'experience', 'education', 'projects', 'skills', 'contact'] as const
 
@@ -13,7 +12,7 @@ function ThemeToggle() {
   const { t } = useLanguage()
   return (
     <button
-      className="icon-btn theme-toggle"
+      className="icon-btn"
       aria-label={t.nav.theme}
       title={t.nav.theme}
       onClick={(e) => toggleTheme({ x: e.clientX, y: e.clientY })}
@@ -21,10 +20,10 @@ function ThemeToggle() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={theme}
-          initial={{ rotate: -120, scale: 0, opacity: 0 }}
-          animate={{ rotate: 0, scale: 1, opacity: 1 }}
-          exit={{ rotate: 120, scale: 0, opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          initial={{ rotate: -90, opacity: 0 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          exit={{ rotate: 90, opacity: 0 }}
+          transition={{ duration: 0.2 }}
           className="icon-wrap"
         >
           {theme === 'dark' ? <FiMoon /> : <FiSun />}
@@ -55,18 +54,17 @@ function LanguageSwitcher() {
 
   return (
     <div className="lang" ref={ref}>
-      <button className="icon-btn lang-btn" aria-label={t.nav.language} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-        <FiGlobe className="lang-globe" />
-        <span className="mono">{lang.toUpperCase()}</span>
+      <button className="icon-btn lang-btn mono" aria-label={t.nav.language} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        {lang.toUpperCase()}
       </button>
       <AnimatePresence>
         {open && (
           <motion.ul
             className="lang-menu"
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
-            transition={{ duration: 0.18 }}
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
           >
             {languages.map((l) => (
               <li key={l.code}>
@@ -96,7 +94,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -119,62 +117,55 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
   }, [menuOpen])
 
-
   return (
     <>
-      <motion.nav
-        className={`navbar ${scrolled ? 'scrolled' : ''}`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <a href="#top" className="logo mono" aria-label="Lucas Brun">
-          <span className="logo-bracket">&lt;</span>
-          <span className="glitch" data-text="LB">
-            LB
-          </span>
-          <span className="logo-bracket">/&gt;</span>
-        </a>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container navbar-inner">
+          <a href="#top" className="logo">
+            Lucas Brun
+          </a>
 
-        <ul className="nav-links">
-          {SECTIONS.map((id) => (
-            <li key={id}>
-              <a href={`#${id}`} className={active === id ? 'active' : ''}>
-                <ScrambleText text={t.nav[id]} />
-                {active === id && <motion.span layoutId="nav-underline" className="nav-underline" />}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="nav-links">
+            {SECTIONS.map((id) => (
+              <li key={id}>
+                <a href={`#${id}`} className={active === id ? 'active' : ''}>
+                  {t.nav[id]}
+                  {active === id && <motion.span layoutId="nav-underline" className="nav-underline" />}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <div className="nav-actions">
-          <LanguageSwitcher />
-          <ThemeToggle />
-          <button className="icon-btn menu-btn" aria-label={t.nav.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen((o) => !o)}>
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </button>
+          <div className="nav-actions">
+            <LanguageSwitcher />
+            <ThemeToggle />
+            <button className="icon-btn menu-btn" aria-label={t.nav.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen((o) => !o)}>
+              {menuOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
-      </motion.nav>
+      </nav>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             className="mobile-menu"
-            initial={{ clipPath: 'circle(0% at calc(100% - 40px) 36px)' }}
-            animate={{ clipPath: 'circle(150% at calc(100% - 40px) 36px)' }}
-            exit={{ clipPath: 'circle(0% at calc(100% - 40px) 36px)' }}
-            transition={{ duration: 0.55, ease: [0.7, 0, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <ul>
+            <ul className="container">
               {SECTIONS.map((id, i) => (
                 <motion.li
                   key={id}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.15 + i * 0.06 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.04 }}
                 >
                   <a href={`#${id}`} onClick={() => setMenuOpen(false)}>
-                    <span className="mono">{String(i + 1).padStart(2, '0')}.</span> {t.nav[id]}
+                    <span className="mono">{String(i + 1).padStart(2, '0')}</span>
+                    {t.nav[id]}
                   </a>
                 </motion.li>
               ))}

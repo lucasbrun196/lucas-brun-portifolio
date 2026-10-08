@@ -1,42 +1,48 @@
-import { motion } from 'framer-motion'
+import type { ReactNode } from 'react'
+import { FiArrowUpRight, FiTool } from 'react-icons/fi'
 import { useLanguage } from '../../context/LanguageContext'
+import { judges, logos } from '../../data/profile'
 import Reveal from '../effects/Reveal'
-import TiltCard from '../effects/TiltCard'
+import LogoTile from '../LogoTile'
 import SectionTitle from '../SectionTitle'
 
 interface InfoCardProps {
-  emoji: string
+  media: ReactNode
   badge: string
   title: string
   text: string
   chips?: string[]
-  className?: string
+  children?: ReactNode
 }
 
-// Emoji tile + badge, title, text and optional chips (marathon, TA role, TCC, workshops).
-function InfoCard({ emoji, badge, title, text, chips, className = '' }: InfoCardProps) {
+function InfoCard({ media, badge, title, text, chips, children }: InfoCardProps) {
   return (
-    <TiltCard className={`card info-card ${className}`} max={6}>
-      <span className="info-emoji" aria-hidden="true">
-        {emoji}
-      </span>
-      <div>
+    <article className="card info-card">
+      <header className="info-head">
+        {media}
         <span className="badge">{badge}</span>
-        <h3>{title}</h3>
-        <p>{text}</p>
-        {chips && (
-          <div className="tags">
-            {chips.map((chip) => (
-              <span key={chip} className="tag">
-                {chip}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    </TiltCard>
+      </header>
+      <h3>{title}</h3>
+      <p>{text}</p>
+      {chips && (
+        <div className="tags">
+          {chips.map((chip) => (
+            <span key={chip} className="tag">
+              {chip}
+            </span>
+          ))}
+        </div>
+      )}
+      {children}
+    </article>
   )
 }
+
+const IconTile = ({ children }: { children: ReactNode }) => (
+  <span className="logo-tile logo-tile-md icon-tile" aria-hidden="true">
+    {children}
+  </span>
+)
 
 export default function Education() {
   const { t } = useLanguage()
@@ -45,55 +51,61 @@ export default function Education() {
   return (
     <section id="education" className="section">
       <div className="container">
-        <SectionTitle index={3} kicker={t.education.kicker} title={t.education.title} />
-        <div className="edu-grid">
-          <div className="edu-col">
-            <Reveal>
-              <TiltCard className="card degree-card" max={6}>
-                <span className="grad-cap" aria-hidden="true">
-                  🎓
-                </span>
-                <span className="badge">{t.education.status}</span>
+        <SectionTitle index={3} title={t.education.title} />
+
+        <Reveal>
+          <article className="card degree-card">
+            <LogoTile name="upf" />
+            <div className="degree-body">
+              <div className="degree-top">
                 <h3>{t.education.degree}</h3>
-                <p className="degree-school">{t.education.school}</p>
-                <p className="degree-desc">{t.education.description}</p>
-                <p className="facts-title mono">{t.education.learnedTitle}</p>
-                <ul className="subjects">
-                  {t.education.subjects.map((s, i) => (
-                    <motion.li
-                      key={s}
-                      className="subject"
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: 'spring', stiffness: 320, damping: 16, delay: 0.1 + i * 0.05 }}
-                    >
-                      {s}
-                    </motion.li>
-                  ))}
-                </ul>
-              </TiltCard>
-            </Reveal>
-          </div>
+                <span className="badge badge-accent">{t.education.status}</span>
+              </div>
+              <p className="degree-school">{t.education.school}</p>
+              <p className="degree-desc">{t.education.description}</p>
+              <ul className="tags">
+                {t.education.subjects.map((s) => (
+                  <li key={s} className="tag">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        </Reveal>
 
-          <div className="edu-col">
-            <Reveal delay={0.1}>
-              <InfoCard emoji="🏆" badge={marathon.badge} title={marathon.title} text={marathon.text} chips={marathon.years} />
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <InfoCard emoji="🧑‍🏫" {...monitor} />
-            </Reveal>
-          </div>
-
-          <div className="edu-full edu-row">
-            <Reveal delay={0.1}>
-              <InfoCard emoji="🌾" className="tcc-card" {...tcc} />
-            </Reveal>
-            <Reveal delay={0.2}>
-              <InfoCard emoji="🛠️" className="workshop-card" {...workshops} />
-            </Reveal>
-          </div>
+        <div className="edu-grid">
+          <Reveal>
+            <InfoCard media={<LogoTile name="dssat" />} {...tcc} />
+          </Reveal>
+          <Reveal delay={0.06}>
+            <InfoCard media={<LogoTile name="sbc" />} badge={marathon.badge} title={marathon.title} text={marathon.text} chips={marathon.years}>
+              <ul className="training">
+                {judges.map(({ logo, href }) => (
+                  <li key={logo}>
+                    <a href={href} target="_blank" rel="noreferrer" className="training-link">
+                      <LogoTile name={logo} size="sm" />
+                      {logos[logo].alt}
+                      <FiArrowUpRight className="training-arrow" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </InfoCard>
+          </Reveal>
+          <Reveal>
+            <InfoCard media={<LogoTile name="cpp" />} {...monitor} />
+          </Reveal>
+          <Reveal delay={0.06}>
+            <InfoCard
+              media={
+                <IconTile>
+                  <FiTool />
+                </IconTile>
+              }
+              {...workshops}
+            />
+          </Reveal>
         </div>
       </div>
     </section>

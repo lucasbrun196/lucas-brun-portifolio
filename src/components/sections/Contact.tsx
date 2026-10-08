@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import { FiCheck, FiCopy, FiDownload, FiMail } from 'react-icons/fi'
+import { FiArrowUpRight, FiCheck, FiCopy, FiDownload } from 'react-icons/fi'
 import { useLanguage } from '../../context/LanguageContext'
 import { email, resumeFor, socials } from '../../data/profile'
-import Magnetic from '../effects/Magnetic'
+import Reveal from '../effects/Reveal'
 import SectionTitle from '../SectionTitle'
 
 export default function Contact() {
@@ -24,30 +24,22 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        <SectionTitle index={6} kicker={t.contact.kicker} title={t.contact.title} />
-        <motion.div
-          className="contact-card card"
-          initial={{ opacity: 0, y: 40, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <SectionTitle index={6} title={t.contact.title} />
+        <Reveal>
+          <p className="contact-lead">{t.contact.lead}</p>
           <div className="email-row">
-            <Magnetic strength={0.25}>
-              <a href={`mailto:${email}`} className="email-link">
-                <FiMail className="email-icon" />
-                <span>{email}</span>
-              </a>
-            </Magnetic>
+            <a href={`mailto:${email}`} className="email-link">
+              {email}
+            </a>
             <button className="icon-btn copy-btn" onClick={copyEmail} aria-label={t.contact.copy} title={t.contact.copy}>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={copied ? 'ok' : 'copy'}
                   className="icon-wrap"
-                  initial={{ scale: 0, rotate: -90 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  exit={{ scale: 0, rotate: 90 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 0.15 }}
                 >
                   {copied ? <FiCheck /> : <FiCopy />}
                 </motion.span>
@@ -57,9 +49,9 @@ export default function Contact() {
               {copied && (
                 <motion.span
                   className="copied-hint mono"
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
+                  initial={{ opacity: 0, x: -4 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0 }}
                   role="status"
                 >
                   {t.contact.copied}
@@ -67,23 +59,24 @@ export default function Contact() {
               )}
             </AnimatePresence>
           </div>
-          <div className="contact-links">
+          <ul className="contact-links">
             {socials.map(({ label, href, icon: Icon }) => (
-              <Magnetic key={label} strength={0.4}>
+              <li key={label}>
                 <a href={href} target="_blank" rel="noreferrer" className="contact-link">
                   <Icon />
-                  <span>{label}</span>
+                  {label}
+                  <FiArrowUpRight className="contact-link-arrow" />
                 </a>
-              </Magnetic>
+              </li>
             ))}
-            <Magnetic strength={0.4}>
+            <li>
               <a href={resume.href} download={resume.file} className="contact-link">
                 <FiDownload />
-                <span>{t.hero.resume}</span>
+                {t.hero.resume}
               </a>
-            </Magnetic>
-          </div>
-        </motion.div>
+            </li>
+          </ul>
+        </Reveal>
       </div>
     </section>
   )

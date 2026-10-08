@@ -1,4 +1,4 @@
-﻿// All visible text lives here. Edit this file to update the portfolio content in every language.
+// All visible text lives here. Edit this file to update the portfolio content in every language.
 
 export type Lang = 'en' | 'pt' | 'es'
 
@@ -8,9 +8,30 @@ export const languages: { code: Lang; label: string }[] = [
   { code: 'es', label: 'Español' },
 ]
 
+// Logo files live in public/logos.
+export type Logo = 'stara' | 'upf' | 'dssat' | 'sbc' | 'cpp' | 'codeforces' | 'beecrowd' | 'telemetry' | 'flutter' | 'aws' | 'usa'
+
+interface Highlight {
+  logo: Logo
+  title: string
+  text: string
+  chips?: string[]
+}
+
+interface Job {
+  company: string
+  role: string
+  period: string
+  location: string
+  logo: Logo
+  current: boolean
+  description: string
+  highlights?: Highlight[]
+  tags: string[]
+}
+
 const en = {
-  meta: { title: 'Lucas Brun · Portfolio' },
-  loader: { output: 'Software Engineer & Computer Science Student 👨‍💻', skip: 'click to skip' },
+  meta: { title: 'Lucas Brun · Software Developer' },
   nav: {
     about: 'About',
     experience: 'Experience',
@@ -23,33 +44,29 @@ const en = {
     menu: 'Menu',
   },
   hero: {
-    iam: "I'm a",
-    roles: ['Software Developer', 'Flutter Developer', 'Backend Builder', 'Cloud Tinkerer', 'Competitive Programmer', 'CS Student'],
+    location: 'Passo Fundo, RS, Brazil',
+    role: 'Software Developer at Stara',
     tagline:
-      'Software developer at Stara and Computer Science student at UPF. I build mobile & web apps, APIs and cloud infrastructure, straight from Passo Fundo, Brazil.',
-    ctaProjects: 'See my projects',
-    ctaContact: "Let's talk",
-    scroll: 'scroll',
+      'I work on telemetry for agricultural machinery: web portals, mobile apps, microservices and infrastructure on AWS. I am also studying Computer Science at UPF.',
+    ctaContact: 'Get in touch',
     resume: 'Download resume',
   },
   about: {
-    kicker: 'whoami',
-    title: 'About me',
+    title: 'About',
     paragraphs: [
-      "I'm Lucas, a software developer from Passo Fundo, Rio Grande do Sul, in the south of Brazil. I work at Stara S/A, one of the country's leading agricultural machinery manufacturers, building telemetry solutions, and I'm pursuing a bachelor's degree in Computer Science at the University of Passo Fundo (UPF).",
-      'I enjoy working across the whole stack: multiplatform apps with Flutter, APIs with Node.js and TypeScript, and cloud infrastructure on AWS with Terraform. Clean architecture and well organized code make me happy.',
-      'Outside of work, I love algorithms: I competed in the SBC Programming Marathon in 2025 and 2026 and was a teaching assistant for Data Structures II at UPF.',
+      "I'm a software developer based in Passo Fundo, in the south of Brazil. Since 2023 I've been at Stara S/A, one of the country's largest agricultural machinery manufacturers, where I started as an intern and now work on the telemetry team.",
+      'Day to day I move between multiplatform apps in Flutter, APIs in Node.js and TypeScript, and infrastructure on AWS with Terraform. I care about readable code and systems that are simple to maintain.',
+      'Outside of work I enjoy algorithms: I competed in the SBC Programming Marathon in 2025 and 2026 and was a teaching assistant for Data Structures II at UPF.',
     ],
-    code: {
-      location: 'Passo Fundo, RS, Brazil',
-      role: 'Software Developer',
-      education: 'Computer Science @ UPF',
-      focus: ['AWS', 'Node.js', 'NestJS', 'C++', 'Python', 'Flutter', 'Cloud', 'APIs'],
-      hobby: 'Competitive programming 🏆',
-    },
+    facts: [
+      { label: 'Location', value: 'Passo Fundo, RS, Brazil' },
+      { label: 'Currently', value: 'Software Developer, Stara' },
+      { label: 'Education', value: 'Computer Science, UPF' },
+      { label: 'Focus', value: 'Node.js, NestJS, AWS, Flutter' },
+      { label: 'Interests', value: 'Algorithms, competitive programming' },
+    ],
   },
   experience: {
-    kicker: 'git log',
     title: 'Experience',
     current: 'Current',
     items: [
@@ -58,45 +75,44 @@ const en = {
         role: 'Software Developer',
         period: '03/2025 → now',
         location: 'Rio Grande do Sul, Brazil',
-        emoji: '🚜',
+        logo: 'stara',
         current: true,
         description:
           "I work on Stara's telemetry projects, building software that turns data from agricultural machines into useful information, from web portals and apps to cloud integrations with international companies.",
         highlights: [
           {
-            emoji: '📡',
-            title: 'Telemetry Portal',
-            text: "Development of Stara's telemetry portal, the web platform used to monitor and follow the data coming from the machines.",
+            logo: 'telemetry',
+            title: 'Telemetry portal',
+            text: "Development of Stara's telemetry portal, the web platform used to monitor the data coming from the machines.",
           },
           {
-            emoji: '📱',
+            logo: 'flutter',
             title: 'Stara apps',
-            text: 'I took part in developing Stara apps such as the Telemetry app, Valor Stara, Pulverização (spraying) and Distribuição (distribution).',
+            text: 'Took part in building Stara apps such as the Telemetry app, Valor Stara, Pulverização (spraying) and Distribuição (distribution).',
             chips: ['Telemetry app', 'Valor Stara', 'Pulverização', 'Distribuição'],
           },
           {
-            emoji: '🌎',
+            logo: 'usa',
             title: 'International integrations',
-            text: "I built a cloud microservice that integrates Stara's telemetry with international companies.",
+            text: "Built a cloud microservice that integrates Stara's telemetry with international companies.",
           },
           {
-            emoji: '⚙️',
+            logo: 'aws',
             title: 'Microservices on AWS',
-            text: 'I also built other microservices with Node.js running on AWS.',
-            chips: ['Node.js', 'AWS'],
+            text: 'Built other Node.js microservices running on AWS.',
           },
         ],
-        tags: ['Telemetry', 'Microservices', 'Cloud', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
+        tags: ['Telemetry', 'Microservices', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
       },
       {
         company: 'Stara S/A',
         role: 'Software Development Intern',
         period: '08/2023 → 03/2025',
         location: 'Rio Grande do Sul, Brazil',
-        emoji: '🌱',
+        logo: 'stara',
         current: false,
         description:
-          'As an intern I worked on projects similar to the ones I build today, on a smaller scale: I developed some apps and APIs, both server based and serverless.',
+          'Worked on projects similar to the ones I build today, on a smaller scale: apps and APIs, both server based and serverless.',
         tags: ['Apps', 'APIs', 'Serverless'],
       },
       {
@@ -104,70 +120,58 @@ const en = {
         role: 'Tier 1 (N1) Support Intern',
         period: '02/2023 → 08/2023',
         location: 'Passo Fundo, RS, Brazil',
-        emoji: '🖥️',
+        logo: 'upf',
         current: false,
-        description: 'I solved tier 1 (N1) support issues across the UPF campus.',
+        description: 'Handled tier 1 (N1) support requests across the UPF campus.',
         tags: ['N1 support', 'Help desk'],
       },
-    ],
+    ] as Job[],
   },
   education: {
-    kicker: 'cd ~/university',
     title: 'Academic life',
     degree: 'Bachelor of Computer Science',
     school: 'University of Passo Fundo (UPF)',
     status: 'In progress',
-    description: "At UPF I'm building a solid foundation in computer science, from theory to practice.",
-    learnedTitle: 'What I learned',
-    subjects: [
-      'Data Structures',
-      'Algorithms',
-      'Theory of Computation',
-      'Computing Fundamentals',
-      'Operating Systems',
-      'Data & AI',
-      '…and much more',
-    ],
+    description: 'A solid foundation in computer science, from theory to practice.',
+    subjects: ['Data Structures', 'Algorithms', 'Theory of Computation', 'Computing Fundamentals', 'Operating Systems', 'Data & AI'],
     marathon: {
       badge: 'Competition',
       title: 'SBC Programming Marathon',
-      text: 'I competed in the Brazilian Computer Society (SBC) Programming Marathon, the Brazilian stage of the ICPC, solving algorithmic problems as a team.',
+      text: 'Competed in the Brazilian Computer Society (SBC) Programming Marathon, the Brazilian stage of the ICPC, solving algorithmic problems as a team.',
       years: ['2025', '2026'],
     },
     monitor: {
       badge: 'Teaching assistant',
-      title: 'Data Structures II TA',
-      text: 'I was a teaching assistant for Data Structures II, helping students with the course: explaining concepts, solving exercises together and answering their questions.',
+      title: 'Data Structures II',
+      text: 'Teaching assistant for Data Structures II, helping students by explaining concepts, solving exercises together and answering their questions.',
     },
     workshops: {
       badge: 'Extracurricular',
       title: 'Workshops',
-      text: 'I took part in workshops to go beyond the classroom: software testing workshops and workshops to learn new technologies in practice, such as Docker and Spring Boot.',
+      text: 'Software testing workshops and practical workshops on new technologies such as Docker and Spring Boot.',
       chips: ['Software testing', 'Docker', 'Spring Boot'],
     },
     tcc: {
       badge: 'Capstone project',
       title: 'Platform for the DSSAT Foundation',
-      text: 'My capstone project (TCC) was the development of a platform for the DSSAT Foundation, where I built the new SBuild with PyQt6. DSSAT is a crop simulation software used by researchers around the world.',
+      text: 'My capstone project (TCC) was a platform for the DSSAT Foundation, where I built the new SBuild with PyQt6. DSSAT is crop simulation software used by researchers around the world.',
       chips: ['Python', 'PyQt6', 'DSSAT'],
     },
   },
   projects: {
-    kicker: 'ls ~/projects',
     title: 'Projects',
-    text: 'All my projects are available on my GitHub: mobile apps, APIs, cloud infrastructure, games and algorithm solutions.',
-    cta: 'See my GitHub',
+    text: 'My personal and academic projects are on GitHub: mobile apps, APIs, cloud infrastructure, games and algorithm solutions.',
+    cta: 'View GitHub',
   },
   skills: {
-    kicker: 'cat skills.json',
     title: 'Skills & tools',
     groups: { languages: 'Languages', frontend: 'Mobile & Web', backend: 'Backend & Data', cloud: 'Cloud & DevOps' },
   },
   contact: {
-    kicker: 'ping lucas',
     title: 'Contact',
+    lead: 'I am open to talking about opportunities and projects. Email is the fastest way to reach me.',
     copy: 'Copy email',
-    copied: 'Copied!',
+    copied: 'Copied',
   },
   footer: {
     top: 'Back to top',
@@ -177,8 +181,7 @@ const en = {
 export type Dict = typeof en
 
 const pt: Dict = {
-  meta: { title: 'Lucas Brun · Portfólio' },
-  loader: { output: 'Engenheiro de Software & Estudante de Ciência da Computação 👨‍💻', skip: 'clique para pular' },
+  meta: { title: 'Lucas Brun · Desenvolvedor de Software' },
   nav: {
     about: 'Sobre',
     experience: 'Experiência',
@@ -191,33 +194,29 @@ const pt: Dict = {
     menu: 'Menu',
   },
   hero: {
-    iam: 'Sou',
-    roles: ['Desenvolvedor de Software', 'Desenvolvedor Flutter', 'Construtor de APIs', 'Explorador de Cloud', 'Programador Competitivo', 'Estudante de CC'],
+    location: 'Passo Fundo, RS, Brasil',
+    role: 'Desenvolvedor de Software na Stara',
     tagline:
-      'Desenvolvedor de software na Stara e estudante de Ciência da Computação na UPF. Crio apps mobile e web, APIs e infraestrutura em nuvem, direto de Passo Fundo, RS.',
-    ctaProjects: 'Ver meus projetos',
-    ctaContact: 'Vamos conversar',
-    scroll: 'role',
+      'Trabalho com telemetria de máquinas agrícolas: portais web, apps mobile, microsserviços e infraestrutura na AWS. Também curso Ciência da Computação na UPF.',
+    ctaContact: 'Entrar em contato',
     resume: 'Baixar currículo',
   },
   about: {
-    kicker: 'whoami',
-    title: 'Sobre mim',
+    title: 'Sobre',
     paragraphs: [
-      'Sou o Lucas, desenvolvedor de software de Passo Fundo, no Rio Grande do Sul, sul do Brasil. Trabalho na Stara S/A, uma das maiores fabricantes de máquinas agrícolas do país, desenvolvendo soluções de telemetria, e curso Ciência da Computação na Universidade de Passo Fundo (UPF).',
-      'Gosto de trabalhar em todas as camadas: apps multiplataforma com Flutter, APIs com Node.js e TypeScript e infraestrutura em nuvem na AWS com Terraform. Arquitetura limpa e código bem organizado me deixam feliz.',
-      'Fora do trabalho, sou apaixonado por algoritmos: participei da Maratona de Programação da SBC em 2025 e 2026 e fui monitor de Estruturas de Dados II na UPF.',
+      'Sou desenvolvedor de software em Passo Fundo, no Rio Grande do Sul. Desde 2023 estou na Stara S/A, uma das maiores fabricantes de máquinas agrícolas do Brasil, onde comecei como estagiário e hoje atuo nos projetos de telemetria.',
+      'No dia a dia transito entre apps multiplataforma em Flutter, APIs em Node.js e TypeScript e infraestrutura na AWS com Terraform. Me importo com código legível e sistemas simples de manter.',
+      'Fora do trabalho gosto de algoritmos: participei da Maratona de Programação da SBC em 2025 e 2026 e fui monitor de Estruturas de Dados II na UPF.',
     ],
-    code: {
-      location: 'Passo Fundo, RS, Brasil',
-      role: 'Desenvolvedor de Software',
-      education: 'Ciência da Computação @ UPF',
-      focus: ['AWS', 'Node.js', 'NestJS', 'C++', 'Python', 'Flutter', 'Cloud', 'APIs'],
-      hobby: 'Programação competitiva 🏆',
-    },
+    facts: [
+      { label: 'Localização', value: 'Passo Fundo, RS, Brasil' },
+      { label: 'Atualmente', value: 'Desenvolvedor de Software, Stara' },
+      { label: 'Formação', value: 'Ciência da Computação, UPF' },
+      { label: 'Foco', value: 'Node.js, NestJS, AWS, Flutter' },
+      { label: 'Interesses', value: 'Algoritmos, programação competitiva' },
+    ],
   },
   experience: {
-    kicker: 'git log',
     title: 'Experiência',
     current: 'Atual',
     items: [
@@ -226,45 +225,44 @@ const pt: Dict = {
         role: 'Desenvolvedor de Software',
         period: '03/2025 → hoje',
         location: 'Rio Grande do Sul, Brasil',
-        emoji: '🚜',
+        logo: 'stara',
         current: true,
         description:
           'Atuo nos projetos de telemetria da Stara, criando software que transforma os dados das máquinas agrícolas em informação útil, de portais web e apps a integrações em nuvem com empresas internacionais.',
         highlights: [
           {
-            emoji: '📡',
+            logo: 'telemetry',
             title: 'Portal de Telemetria',
-            text: 'Desenvolvimento do portal de telemetria da Stara, a plataforma web para monitorar e acompanhar os dados vindos das máquinas.',
+            text: 'Desenvolvimento do portal de telemetria da Stara, a plataforma web para monitorar os dados vindos das máquinas.',
           },
           {
-            emoji: '📱',
+            logo: 'flutter',
             title: 'Apps da Stara',
             text: 'Participei do desenvolvimento de apps da Stara, como o App da Telemetria, o Valor Stara, o Pulverização e o Distribuição.',
             chips: ['App da Telemetria', 'Valor Stara', 'Pulverização', 'Distribuição'],
           },
           {
-            emoji: '🌎',
+            logo: 'usa',
             title: 'Integrações internacionais',
             text: 'Construí um microsserviço em nuvem que integra a telemetria da Stara com empresas internacionais.',
           },
           {
-            emoji: '⚙️',
+            logo: 'aws',
             title: 'Microsserviços na AWS',
-            text: 'Desenvolvi também outros microsserviços com Node.js rodando na AWS.',
-            chips: ['Node.js', 'AWS'],
+            text: 'Desenvolvi outros microsserviços em Node.js rodando na AWS.',
           },
         ],
-        tags: ['Telemetria', 'Microsserviços', 'Cloud', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
+        tags: ['Telemetria', 'Microsserviços', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
       },
       {
         company: 'Stara S/A',
         role: 'Estagiário de Desenvolvimento',
         period: '08/2023 → 03/2025',
         location: 'Rio Grande do Sul, Brasil',
-        emoji: '🌱',
+        logo: 'stara',
         current: false,
         description:
-          'Como estagiário, desenvolvi projetos parecidos com os que desenvolvo hoje, em uma escala menor: criei alguns apps e APIs, tanto server quanto serverless.',
+          'Desenvolvi projetos parecidos com os que faço hoje, em uma escala menor: apps e APIs, tanto server quanto serverless.',
         tags: ['Apps', 'APIs', 'Serverless'],
       },
       {
@@ -272,30 +270,20 @@ const pt: Dict = {
         role: 'Estagiário de Suporte N1',
         period: '02/2023 → 08/2023',
         location: 'Passo Fundo, RS, Brasil',
-        emoji: '🖥️',
+        logo: 'upf',
         current: false,
-        description: 'Resolvia problemas de suporte N1 dentro do campus da UPF.',
+        description: 'Atendimento de suporte N1 dentro do campus da UPF.',
         tags: ['Suporte N1', 'Help desk'],
       },
     ],
   },
   education: {
-    kicker: 'cd ~/faculdade',
     title: 'Vida acadêmica',
     degree: 'Bacharelado em Ciência da Computação',
     school: 'Universidade de Passo Fundo (UPF)',
     status: 'Em andamento',
-    description: 'Na UPF estou construindo uma base sólida em computação, da teoria à prática.',
-    learnedTitle: 'O que aprendi',
-    subjects: [
-      'Estruturas de Dados',
-      'Algoritmos',
-      'Teoria da Computação',
-      'Fundamentos da Computação',
-      'Sistemas Operacionais',
-      'Dados & IA',
-      '…e muito mais',
-    ],
+    description: 'Uma base sólida em computação, da teoria à prática.',
+    subjects: ['Estruturas de Dados', 'Algoritmos', 'Teoria da Computação', 'Fundamentos da Computação', 'Sistemas Operacionais', 'Dados & IA'],
     marathon: {
       badge: 'Competição',
       title: 'Maratona de Programação da SBC',
@@ -304,13 +292,13 @@ const pt: Dict = {
     },
     monitor: {
       badge: 'Monitoria',
-      title: 'Monitor de Estruturas de Dados II',
+      title: 'Estruturas de Dados II',
       text: 'Fui monitor da disciplina de Estruturas de Dados II, ajudando os alunos com a matéria: explicando conceitos, resolvendo exercícios juntos e tirando dúvidas.',
     },
     workshops: {
       badge: 'Extracurricular',
       title: 'Oficinas',
-      text: 'Participei de oficinas para ir além da sala de aula: oficinas de testes de software e oficinas para aprender novas tecnologias na prática, como Docker e Spring Boot.',
+      text: 'Oficinas de testes de software e oficinas práticas de novas tecnologias, como Docker e Spring Boot.',
       chips: ['Testes de software', 'Docker', 'Spring Boot'],
     },
     tcc: {
@@ -321,21 +309,19 @@ const pt: Dict = {
     },
   },
   projects: {
-    kicker: 'ls ~/projetos',
     title: 'Projetos',
-    text: 'Todos os meus projetos estão disponíveis no meu GitHub: apps mobile, APIs, infraestrutura em nuvem, jogos e soluções de algoritmos.',
-    cta: 'Ver meu GitHub',
+    text: 'Meus projetos pessoais e acadêmicos ficam no GitHub: apps mobile, APIs, infraestrutura em nuvem, jogos e soluções de algoritmos.',
+    cta: 'Ver GitHub',
   },
   skills: {
-    kicker: 'cat skills.json',
     title: 'Skills e ferramentas',
     groups: { languages: 'Linguagens', frontend: 'Mobile & Web', backend: 'Backend & Dados', cloud: 'Cloud & DevOps' },
   },
   contact: {
-    kicker: 'ping lucas',
     title: 'Contato',
+    lead: 'Estou aberto a conversar sobre oportunidades e projetos. O jeito mais rápido de falar comigo é por email.',
     copy: 'Copiar email',
-    copied: 'Copiado!',
+    copied: 'Copiado',
   },
   footer: {
     top: 'Voltar ao topo',
@@ -343,8 +329,7 @@ const pt: Dict = {
 }
 
 const es: Dict = {
-  meta: { title: 'Lucas Brun · Portafolio' },
-  loader: { output: 'Ingeniero de Software y Estudiante de Ciencias de la Computación 👨‍💻', skip: 'clic para saltar' },
+  meta: { title: 'Lucas Brun · Desarrollador de Software' },
   nav: {
     about: 'Sobre mí',
     experience: 'Experiencia',
@@ -357,33 +342,29 @@ const es: Dict = {
     menu: 'Menú',
   },
   hero: {
-    iam: 'Soy',
-    roles: ['Desarrollador de Software', 'Desarrollador Flutter', 'Constructor de APIs', 'Explorador de la Nube', 'Programador Competitivo', 'Estudiante de CC'],
+    location: 'Passo Fundo, RS, Brasil',
+    role: 'Desarrollador de Software en Stara',
     tagline:
-      'Desarrollador de software en Stara y estudiante de Ciencias de la Computación en la UPF. Creo apps móviles y web, APIs e infraestructura en la nube, desde Passo Fundo, Brasil.',
-    ctaProjects: 'Ver mis proyectos',
-    ctaContact: 'Hablemos',
-    scroll: 'desliza',
+      'Trabajo con telemetría de maquinaria agrícola: portales web, apps móviles, microservicios e infraestructura en AWS. También estudio Ciencias de la Computación en la UPF.',
+    ctaContact: 'Contactar',
     resume: 'Descargar currículum',
   },
   about: {
-    kicker: 'whoami',
     title: 'Sobre mí',
     paragraphs: [
-      'Soy Lucas, desarrollador de software de Passo Fundo, Rio Grande do Sul, en el sur de Brasil. Trabajo en Stara S/A, uno de los principales fabricantes de maquinaria agrícola del país, desarrollando soluciones de telemetría, y estudio Ciencias de la Computación en la Universidad de Passo Fundo (UPF).',
-      'Disfruto trabajar en todo el stack: apps multiplataforma con Flutter, APIs con Node.js y TypeScript e infraestructura en la nube en AWS con Terraform. La arquitectura limpia y el código bien organizado me hacen feliz.',
-      'Fuera del trabajo, me apasionan los algoritmos: participé en la Maratón de Programación de la SBC en 2025 y 2026 y fui ayudante de Estructuras de Datos II en la UPF.',
+      'Soy desarrollador de software en Passo Fundo, en el sur de Brasil. Desde 2023 estoy en Stara S/A, uno de los mayores fabricantes de maquinaria agrícola del país, donde empecé como pasante y hoy trabajo en los proyectos de telemetría.',
+      'En el día a día me muevo entre apps multiplataforma en Flutter, APIs en Node.js y TypeScript e infraestructura en AWS con Terraform. Me importa el código legible y los sistemas fáciles de mantener.',
+      'Fuera del trabajo me gustan los algoritmos: participé en la Maratón de Programación de la SBC en 2025 y 2026 y fui ayudante de Estructuras de Datos II en la UPF.',
     ],
-    code: {
-      location: 'Passo Fundo, RS, Brasil',
-      role: 'Desarrollador de Software',
-      education: 'Ciencias de la Computación @ UPF',
-      focus: ['AWS', 'Node.js', 'NestJS', 'C++', 'Python', 'Flutter', 'Cloud', 'APIs'],
-      hobby: 'Programación competitiva 🏆',
-    },
+    facts: [
+      { label: 'Ubicación', value: 'Passo Fundo, RS, Brasil' },
+      { label: 'Actualmente', value: 'Desarrollador de Software, Stara' },
+      { label: 'Formación', value: 'Ciencias de la Computación, UPF' },
+      { label: 'Enfoque', value: 'Node.js, NestJS, AWS, Flutter' },
+      { label: 'Intereses', value: 'Algoritmos, programación competitiva' },
+    ],
   },
   experience: {
-    kicker: 'git log',
     title: 'Experiencia',
     current: 'Actual',
     items: [
@@ -392,45 +373,44 @@ const es: Dict = {
         role: 'Desarrollador de Software',
         period: '03/2025 → hoy',
         location: 'Rio Grande do Sul, Brasil',
-        emoji: '🚜',
+        logo: 'stara',
         current: true,
         description:
           'Trabajo en los proyectos de telemetría de Stara, creando software que convierte los datos de las máquinas agrícolas en información útil, desde portales web y apps hasta integraciones en la nube con empresas internacionales.',
         highlights: [
           {
-            emoji: '📡',
+            logo: 'telemetry',
             title: 'Portal de Telemetría',
-            text: 'Desarrollo del portal de telemetría de Stara, la plataforma web para monitorear y seguir los datos que llegan de las máquinas.',
+            text: 'Desarrollo del portal de telemetría de Stara, la plataforma web para monitorear los datos que llegan de las máquinas.',
           },
           {
-            emoji: '📱',
+            logo: 'flutter',
             title: 'Apps de Stara',
             text: 'Participé en el desarrollo de apps de Stara, como la App de Telemetría, Valor Stara, Pulverização (pulverización) y Distribuição (distribución).',
             chips: ['App de Telemetría', 'Valor Stara', 'Pulverização', 'Distribuição'],
           },
           {
-            emoji: '🌎',
+            logo: 'usa',
             title: 'Integraciones internacionales',
             text: 'Construí un microservicio en la nube que integra la telemetría de Stara con empresas internacionales.',
           },
           {
-            emoji: '⚙️',
+            logo: 'aws',
             title: 'Microservicios en AWS',
-            text: 'También desarrollé otros microservicios con Node.js en AWS.',
-            chips: ['Node.js', 'AWS'],
+            text: 'Desarrollé otros microservicios en Node.js sobre AWS.',
           },
         ],
-        tags: ['Telemetría', 'Microservicios', 'Cloud', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
+        tags: ['Telemetría', 'Microservicios', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
       },
       {
         company: 'Stara S/A',
         role: 'Pasante de Desarrollo',
         period: '08/2023 → 03/2025',
         location: 'Rio Grande do Sul, Brasil',
-        emoji: '🌱',
+        logo: 'stara',
         current: false,
         description:
-          'Como pasante, desarrollé proyectos parecidos a los que desarrollo hoy, en una escala menor: creé algunas apps y APIs, tanto server como serverless.',
+          'Desarrollé proyectos parecidos a los que hago hoy, en una escala menor: apps y APIs, tanto server como serverless.',
         tags: ['Apps', 'APIs', 'Serverless'],
       },
       {
@@ -438,30 +418,20 @@ const es: Dict = {
         role: 'Pasante de Soporte N1',
         period: '02/2023 → 08/2023',
         location: 'Passo Fundo, RS, Brasil',
-        emoji: '🖥️',
+        logo: 'upf',
         current: false,
-        description: 'Resolvía problemas de soporte N1 dentro del campus de la UPF.',
+        description: 'Atención de soporte N1 dentro del campus de la UPF.',
         tags: ['Soporte N1', 'Help desk'],
       },
     ],
   },
   education: {
-    kicker: 'cd ~/universidad',
     title: 'Vida académica',
     degree: 'Licenciatura en Ciencias de la Computación',
     school: 'Universidad de Passo Fundo (UPF)',
     status: 'En curso',
-    description: 'En la UPF estoy construyendo una base sólida en computación, de la teoría a la práctica.',
-    learnedTitle: 'Lo que aprendí',
-    subjects: [
-      'Estructuras de Datos',
-      'Algoritmos',
-      'Teoría de la Computación',
-      'Fundamentos de la Computación',
-      'Sistemas Operativos',
-      'Datos e IA',
-      '…y mucho más',
-    ],
+    description: 'Una base sólida en computación, de la teoría a la práctica.',
+    subjects: ['Estructuras de Datos', 'Algoritmos', 'Teoría de la Computación', 'Fundamentos de la Computación', 'Sistemas Operativos', 'Datos e IA'],
     marathon: {
       badge: 'Competición',
       title: 'Maratón de Programación de la SBC',
@@ -470,38 +440,36 @@ const es: Dict = {
     },
     monitor: {
       badge: 'Ayudantía',
-      title: 'Ayudante de Estructuras de Datos II',
+      title: 'Estructuras de Datos II',
       text: 'Fui ayudante (monitor) de la materia Estructuras de Datos II, apoyando a los alumnos: explicando conceptos, resolviendo ejercicios juntos y aclarando dudas.',
     },
     workshops: {
       badge: 'Extracurricular',
       title: 'Talleres',
-      text: 'Participé en talleres para ir más allá del aula: talleres de pruebas de software y talleres para aprender nuevas tecnologías en la práctica, como Docker y Spring Boot.',
+      text: 'Talleres de pruebas de software y talleres prácticos de nuevas tecnologías, como Docker y Spring Boot.',
       chips: ['Pruebas de software', 'Docker', 'Spring Boot'],
     },
     tcc: {
       badge: 'Trabajo final',
       title: 'Plataforma para la Fundación DSSAT',
-      text: 'Mi trabajo final de carrera (TCC) fue el desarrollo de una plataforma para la Fundación DSSAT, donde construí el nuevo SBuild con PyQt6. DSSAT es un software de simulación de cultivos usado por investigadores de todo el mundo.',
+      text: 'Mi trabajo final de carrera (TCC) fue una plataforma para la Fundación DSSAT, donde construí el nuevo SBuild con PyQt6. DSSAT es un software de simulación de cultivos usado por investigadores de todo el mundo.',
       chips: ['Python', 'PyQt6', 'DSSAT'],
     },
   },
   projects: {
-    kicker: 'ls ~/proyectos',
     title: 'Proyectos',
-    text: 'Todos mis proyectos están disponibles en mi GitHub: apps móviles, APIs, infraestructura en la nube, juegos y soluciones de algoritmos.',
-    cta: 'Ver mi GitHub',
+    text: 'Mis proyectos personales y académicos están en GitHub: apps móviles, APIs, infraestructura en la nube, juegos y soluciones de algoritmos.',
+    cta: 'Ver GitHub',
   },
   skills: {
-    kicker: 'cat skills.json',
     title: 'Skills y herramientas',
     groups: { languages: 'Lenguajes', frontend: 'Móvil y Web', backend: 'Backend y Datos', cloud: 'Nube y DevOps' },
   },
   contact: {
-    kicker: 'ping lucas',
     title: 'Contacto',
+    lead: 'Estoy abierto a conversar sobre oportunidades y proyectos. El email es la forma más rápida de contactarme.',
     copy: 'Copiar email',
-    copied: '¡Copiado!',
+    copied: 'Copiado',
   },
   footer: {
     top: 'Volver arriba',

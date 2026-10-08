@@ -1,12 +1,35 @@
 import type { IconType } from 'react-icons'
-import type { Lang } from '../i18n/translations'
+import type { Lang, Logo } from '../i18n/translations'
 import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi'
 import { SiC, SiCplusplus, SiDart, SiDocker, SiFastify, SiFirebase, SiFlutter, SiGit, SiGo, SiGooglemaps, SiHtml5, SiCss, SiJavascript, SiJupyter, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiRedis, SiTerraform, SiTypeorm, SiTypescript, SiVercel } from 'react-icons/si'
 import { FaAws, FaJava } from 'react-icons/fa6'
 import { TbBrandCSharp, TbContainer, TbServer } from 'react-icons/tb'
 
-// Drop your photo at public/profile.jpg — until then the hero shows your initials.
+// Drop your photo at public/profile.jpg. Until then the hero simply shows no photo.
 export const profilePhoto = 'profile.jpg'
+
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
+// `fill` logos already carry their own background, so they cover the whole tile.
+export const logos: Record<Logo, { src: string; alt: string; fill?: boolean }> = {
+  stara: { src: asset('logos/stara.png'), alt: 'Stara' },
+  upf: { src: asset('logos/upf.png'), alt: 'UPF' },
+  dssat: { src: asset('logos/dssat.png'), alt: 'DSSAT' },
+  sbc: { src: asset('logos/sbc.png'), alt: 'SBC' },
+  cpp: { src: asset('logos/cpp.png'), alt: 'C++' },
+  codeforces: { src: asset('logos/codeforces.png'), alt: 'Codeforces' },
+  beecrowd: { src: asset('logos/beecrowd.png'), alt: 'beecrowd' },
+  telemetry: { src: asset('logos/telemetry.png'), alt: 'Stara Telemetria' },
+  flutter: { src: asset('logos/flutter.png'), alt: 'Flutter' },
+  aws: { src: asset('logos/aws.png'), alt: 'AWS', fill: true },
+  usa: { src: asset('logos/usa.png'), alt: 'USA' },
+}
+
+// Competitive programming profiles shown in the SBC Marathon card.
+export const judges: { logo: Logo; href: string }[] = [
+  { logo: 'codeforces', href: 'https://codeforces.com/profile/lucasBrun' },
+  { logo: 'beecrowd', href: 'https://judge.beecrowd.com/en/profile/803945' },
+]
 
 export const socials: { label: string; href: string; icon: IconType }[] = [
   { label: 'GitHub', href: 'https://github.com/lucasbrun196', icon: FiGithub },
@@ -21,7 +44,7 @@ export const email = 'luucaasbrum13@gmail.com'
 // Resume PDFs live in public/. Portuguese gets the PT version; English and Spanish get the EN one.
 export function resumeFor(lang: Lang) {
   const file = lang === 'pt' ? 'resume_lucas_brun_pt.pdf' : 'resume_lucas_brun_en.pdf'
-  return { href: `${import.meta.env.BASE_URL}${file}`, file }
+  return { href: asset(file), file }
 }
 
 export interface Skill {
@@ -30,10 +53,9 @@ export interface Skill {
   color: string
 }
 
-export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; emoji: string; skills: Skill[] }[] = [
+export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; skills: Skill[] }[] = [
   {
     id: 'languages',
-    emoji: '⌨️',
     skills: [
       { name: 'C', icon: SiC, color: '#a8b9cc' },
       { name: 'C++', icon: SiCplusplus, color: '#00599c' },
@@ -48,7 +70,6 @@ export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; 
   },
   {
     id: 'frontend',
-    emoji: '📱',
     skills: [
       { name: 'Flutter', icon: SiFlutter, color: '#02569b' },
       { name: 'React', icon: SiReact, color: '#61dafb' },
@@ -59,7 +80,6 @@ export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; 
   },
   {
     id: 'backend',
-    emoji: '🧩',
     skills: [
       { name: 'Node.js', icon: SiNodedotjs, color: '#5fa04e' },
       { name: 'Fastify', icon: SiFastify, color: '#8b5cf6' },
@@ -72,7 +92,6 @@ export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; 
   },
   {
     id: 'cloud',
-    emoji: '☁️',
     skills: [
       { name: 'AWS', icon: FaAws, color: '#ff9900' },
       { name: 'ECS', icon: TbContainer, color: '#ff9900' },
