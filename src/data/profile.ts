@@ -1,9 +1,9 @@
 import type { IconType } from 'react-icons'
 import type { Lang, Logo } from '../i18n/translations'
 import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi'
-import { SiC, SiCplusplus, SiDart, SiDocker, SiFastify, SiFirebase, SiFlutter, SiGit, SiGo, SiGooglemaps, SiHtml5, SiCss, SiJavascript, SiJupyter, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiRedis, SiTerraform, SiTypeorm, SiTypescript, SiVercel } from 'react-icons/si'
+import { SiC, SiCplusplus, SiDart, SiDocker, SiFastify, SiFirebase, SiFlutter, SiGit, SiGo, SiGooglemaps, SiHtml5, SiCss, SiJavascript, SiJupyter, SiNestjs, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiRedis, SiTerraform, SiTypeorm, SiTypescript, SiVercel } from 'react-icons/si'
 import { FaAws, FaJava } from 'react-icons/fa6'
-import { TbBrandCSharp, TbContainer, TbServer } from 'react-icons/tb'
+import { TbBrandCSharp, TbContainer, TbLambda, TbServer, TbStack2 } from 'react-icons/tb'
 
 // Drop your photo at public/profile.jpg. Until then the hero simply shows no photo.
 export const profilePhoto = 'profile.jpg'
@@ -53,35 +53,13 @@ export interface Skill {
   color: string
 }
 
+// Backend and cloud come first: that is where most of my work is.
 export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; skills: Skill[] }[] = [
-  {
-    id: 'languages',
-    skills: [
-      { name: 'C', icon: SiC, color: '#a8b9cc' },
-      { name: 'C++', icon: SiCplusplus, color: '#00599c' },
-      { name: 'Dart', icon: SiDart, color: '#0175c2' },
-      { name: 'TypeScript', icon: SiTypescript, color: '#3178c6' },
-      { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
-      { name: 'Python', icon: SiPython, color: '#3776ab' },
-      { name: 'Go', icon: SiGo, color: '#00add8' },
-      { name: 'Java', icon: FaJava, color: '#e76f00' },
-      { name: 'C#', icon: TbBrandCSharp, color: '#9b4f96' },
-    ],
-  },
-  {
-    id: 'frontend',
-    skills: [
-      { name: 'Flutter', icon: SiFlutter, color: '#02569b' },
-      { name: 'React', icon: SiReact, color: '#61dafb' },
-      { name: 'HTML', icon: SiHtml5, color: '#e34f26' },
-      { name: 'CSS', icon: SiCss, color: '#663399' },
-      { name: 'Google Maps', icon: SiGooglemaps, color: '#4285f4' },
-    ],
-  },
   {
     id: 'backend',
     skills: [
       { name: 'Node.js', icon: SiNodedotjs, color: '#5fa04e' },
+      { name: 'NestJS', icon: SiNestjs, color: '#e0234e' },
       { name: 'Fastify', icon: SiFastify, color: '#8b5cf6' },
       { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169e1' },
       { name: 'Redis', icon: SiRedis, color: '#ff4438' },
@@ -96,10 +74,36 @@ export const skillGroups: { id: 'languages' | 'frontend' | 'backend' | 'cloud'; 
       { name: 'AWS', icon: FaAws, color: '#ff9900' },
       { name: 'ECS', icon: TbContainer, color: '#ff9900' },
       { name: 'EC2', icon: TbServer, color: '#ff9900' },
+      { name: 'Lambda', icon: TbLambda, color: '#ff9900' },
+      { name: 'SQS', icon: TbStack2, color: '#ff9900' },
       { name: 'Terraform', icon: SiTerraform, color: '#844fba' },
       { name: 'Docker', icon: SiDocker, color: '#2496ed' },
       { name: 'Git', icon: SiGit, color: '#f05032' },
       { name: 'Vercel', icon: SiVercel, color: '#a1a1aa' },
+    ],
+  },
+  {
+    id: 'languages',
+    skills: [
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178c6' },
+      { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
+      { name: 'Python', icon: SiPython, color: '#3776ab' },
+      { name: 'Go', icon: SiGo, color: '#00add8' },
+      { name: 'C', icon: SiC, color: '#a8b9cc' },
+      { name: 'C++', icon: SiCplusplus, color: '#00599c' },
+      { name: 'Java', icon: FaJava, color: '#e76f00' },
+      { name: 'C#', icon: TbBrandCSharp, color: '#9b4f96' },
+      { name: 'Dart', icon: SiDart, color: '#0175c2' },
+    ],
+  },
+  {
+    id: 'frontend',
+    skills: [
+      { name: 'Flutter', icon: SiFlutter, color: '#02569b' },
+      { name: 'React', icon: SiReact, color: '#61dafb' },
+      { name: 'HTML', icon: SiHtml5, color: '#e34f26' },
+      { name: 'CSS', icon: SiCss, color: '#663399' },
+      { name: 'Google Maps', icon: SiGooglemaps, color: '#4285f4' },
     ],
   },
 ]

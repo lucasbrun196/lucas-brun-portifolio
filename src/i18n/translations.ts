@@ -47,22 +47,23 @@ const en = {
     location: 'Passo Fundo, RS, Brazil',
     role: 'Software Developer at Stara',
     tagline:
-      'I work on telemetry for agricultural machinery: web portals, mobile apps, microservices and infrastructure on AWS. I am also studying Computer Science at UPF.',
+      'I focus on backend, microservices and cloud, mainly on AWS. At Stara I build the services behind the telemetry of agricultural machines with Node.js, NestJS and Terraform. I am also studying Computer Science at UPF.',
     ctaContact: 'Get in touch',
     resume: 'Download resume',
   },
   about: {
     title: 'About',
     paragraphs: [
-      "I'm a software developer based in Passo Fundo, in the south of Brazil. Since 2023 I've been at Stara S/A, one of the country's largest agricultural machinery manufacturers, where I started as an intern and now work on the telemetry team.",
-      'Day to day I move between multiplatform apps in Flutter, APIs in Node.js and TypeScript, and infrastructure on AWS with Terraform. I care about readable code and systems that are simple to maintain.',
+      "I'm a software developer based in Passo Fundo, in the south of Brazil. Since 2023 I've been at Stara S/A, one of the country's largest agricultural machinery manufacturers, where I started as an intern and now work mostly on the backend of the telemetry projects.",
+      'My focus is backend: microservices and APIs in Node.js, NestJS and TypeScript running in the cloud, mainly on AWS. Day to day I work with EC2, ECS, Lambda, SQS and other AWS services, with the infrastructure written in Terraform. When a project calls for it, I also build apps in Flutter. I care about readable code and systems that are simple to maintain.',
       'Outside of work I enjoy algorithms: I competed in the SBC Programming Marathon in 2025 and 2026 and was a teaching assistant for Data Structures II at UPF.',
     ],
     facts: [
       { label: 'Location', value: 'Passo Fundo, RS, Brazil' },
       { label: 'Currently', value: 'Software Developer, Stara' },
       { label: 'Education', value: 'Computer Science, UPF' },
-      { label: 'Focus', value: 'Node.js, NestJS, AWS, Flutter' },
+      { label: 'Focus', value: 'Backend, microservices, AWS' },
+      { label: 'Stack', value: 'Node.js, NestJS, TypeScript, Terraform' },
       { label: 'Interests', value: 'Algorithms, competitive programming' },
     ],
   },
@@ -78,8 +79,19 @@ const en = {
         logo: 'stara',
         current: true,
         description:
-          "I work on Stara's telemetry projects, building software that turns data from agricultural machines into useful information, from web portals and apps to cloud integrations with international companies.",
+          "I work on Stara's telemetry projects, mostly on the backend: microservices and cloud integrations on AWS that turn data from agricultural machines into useful information, plus the web portal and the apps.",
         highlights: [
+          {
+            logo: 'aws',
+            title: 'Microservices on AWS',
+            text: 'Node.js and NestJS microservices running on AWS, using services such as EC2, ECS, Lambda and SQS, with the infrastructure in Terraform.',
+            chips: ['EC2', 'ECS', 'Lambda', 'SQS', 'Terraform'],
+          },
+          {
+            logo: 'usa',
+            title: 'International integrations',
+            text: "Built a cloud microservice that integrates Stara's telemetry with international companies.",
+          },
           {
             logo: 'telemetry',
             title: 'Telemetry portal',
@@ -91,18 +103,8 @@ const en = {
             text: 'Took part in building Stara apps such as the Telemetry app, Valor Stara, Pulverização (spraying) and Distribuição (distribution).',
             chips: ['Telemetry app', 'Valor Stara', 'Pulverização', 'Distribuição'],
           },
-          {
-            logo: 'usa',
-            title: 'International integrations',
-            text: "Built a cloud microservice that integrates Stara's telemetry with international companies.",
-          },
-          {
-            logo: 'aws',
-            title: 'Microservices on AWS',
-            text: 'Built other Node.js microservices running on AWS.',
-          },
         ],
-        tags: ['Telemetry', 'Microservices', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
+        tags: ['Node.js', 'NestJS', 'TypeScript', 'AWS', 'Terraform', 'Microservices', 'Telemetry', 'Flutter'],
       },
       {
         company: 'Stara S/A',
@@ -161,7 +163,25 @@ const en = {
   projects: {
     title: 'Projects',
     text: 'My personal and academic projects are on GitHub: mobile apps, APIs, cloud infrastructure, games and algorithm solutions.',
-    cta: 'View GitHub',
+    cta: 'View on GitHub',
+    showcase: 'I also keep a playground of projects and templates focused on front end, built with AI.',
+    world: {
+      label: 'Interactive 3D map of my front end playground',
+      play: 'Click to play',
+      playHint: 'Walk up to a project to open it',
+      move: 'move',
+      open: 'open project',
+      exit: 'leave',
+      or: 'or',
+      hint: 'Press E or click to open',
+      loading: 'Loading the 3D world',
+      listView: 'View as list',
+      worldView: 'View 3D map',
+      listTitle: 'Playground',
+      clawdTitle: 'Claude Code',
+      clawd: 'The projects and templates in this playground were built with AI, using Claude Code.',
+      madeWith: 'Built with AI using Claude Code',
+    },
   },
   skills: {
     title: 'Skills & tools',
@@ -197,22 +217,23 @@ const pt: Dict = {
     location: 'Passo Fundo, RS, Brasil',
     role: 'Desenvolvedor de Software na Stara',
     tagline:
-      'Trabalho com telemetria de máquinas agrícolas: portais web, apps mobile, microsserviços e infraestrutura na AWS. Também curso Ciência da Computação na UPF.',
+      'Desenvolvedor focado em backend, microsserviços e nuvem, principalmente na AWS. Na Stara, construo os serviços por trás da telemetria das máquinas agrícolas com Node.js, NestJS e Terraform. Também curso Ciência da Computação na UPF.',
     ctaContact: 'Entrar em contato',
     resume: 'Baixar currículo',
   },
   about: {
     title: 'Sobre',
     paragraphs: [
-      'Sou desenvolvedor de software em Passo Fundo, no Rio Grande do Sul. Desde 2023 estou na Stara S/A, uma das maiores fabricantes de máquinas agrícolas do Brasil, onde comecei como estagiário e hoje atuo nos projetos de telemetria.',
-      'No dia a dia transito entre apps multiplataforma em Flutter, APIs em Node.js e TypeScript e infraestrutura na AWS com Terraform. Me importo com código legível e sistemas simples de manter.',
+      'Sou desenvolvedor de software em Passo Fundo, no Rio Grande do Sul. Desde 2023 estou na Stara S/A, uma das maiores fabricantes de máquinas agrícolas do Brasil, onde comecei como estagiário e hoje atuo principalmente no backend dos projetos de telemetria.',
+      'Meu foco é backend: microsserviços e APIs em Node.js, NestJS e TypeScript rodando na nuvem, principalmente na AWS. No dia a dia trabalho com EC2, ECS, Lambda, SQS e outros serviços da AWS, com a infraestrutura escrita em Terraform. Quando o projeto pede, também desenvolvo apps em Flutter. Me importo com código legível e sistemas simples de manter.',
       'Fora do trabalho gosto de algoritmos: participei da Maratona de Programação da SBC em 2025 e 2026 e fui monitor de Estruturas de Dados II na UPF.',
     ],
     facts: [
       { label: 'Localização', value: 'Passo Fundo, RS, Brasil' },
       { label: 'Atualmente', value: 'Desenvolvedor de Software, Stara' },
       { label: 'Formação', value: 'Ciência da Computação, UPF' },
-      { label: 'Foco', value: 'Node.js, NestJS, AWS, Flutter' },
+      { label: 'Foco', value: 'Backend, microsserviços, AWS' },
+      { label: 'Stack', value: 'Node.js, NestJS, TypeScript, Terraform' },
       { label: 'Interesses', value: 'Algoritmos, programação competitiva' },
     ],
   },
@@ -228,8 +249,19 @@ const pt: Dict = {
         logo: 'stara',
         current: true,
         description:
-          'Atuo nos projetos de telemetria da Stara, criando software que transforma os dados das máquinas agrícolas em informação útil, de portais web e apps a integrações em nuvem com empresas internacionais.',
+          'Atuo nos projetos de telemetria da Stara, principalmente no backend: microsserviços e integrações em nuvem na AWS que transformam os dados das máquinas agrícolas em informação útil, além do portal web e dos apps.',
         highlights: [
+          {
+            logo: 'aws',
+            title: 'Microsserviços na AWS',
+            text: 'Microsserviços em Node.js e NestJS rodando na AWS, usando serviços como EC2, ECS, Lambda e SQS, com a infraestrutura em Terraform.',
+            chips: ['EC2', 'ECS', 'Lambda', 'SQS', 'Terraform'],
+          },
+          {
+            logo: 'usa',
+            title: 'Integrações internacionais',
+            text: 'Construí um microsserviço em nuvem que integra a telemetria da Stara com empresas internacionais.',
+          },
           {
             logo: 'telemetry',
             title: 'Portal de Telemetria',
@@ -241,18 +273,8 @@ const pt: Dict = {
             text: 'Participei do desenvolvimento de apps da Stara, como o App da Telemetria, o Valor Stara, o Pulverização e o Distribuição.',
             chips: ['App da Telemetria', 'Valor Stara', 'Pulverização', 'Distribuição'],
           },
-          {
-            logo: 'usa',
-            title: 'Integrações internacionais',
-            text: 'Construí um microsserviço em nuvem que integra a telemetria da Stara com empresas internacionais.',
-          },
-          {
-            logo: 'aws',
-            title: 'Microsserviços na AWS',
-            text: 'Desenvolvi outros microsserviços em Node.js rodando na AWS.',
-          },
         ],
-        tags: ['Telemetria', 'Microsserviços', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
+        tags: ['Node.js', 'NestJS', 'TypeScript', 'AWS', 'Terraform', 'Microsserviços', 'Telemetria', 'Flutter'],
       },
       {
         company: 'Stara S/A',
@@ -311,7 +333,25 @@ const pt: Dict = {
   projects: {
     title: 'Projetos',
     text: 'Meus projetos pessoais e acadêmicos ficam no GitHub: apps mobile, APIs, infraestrutura em nuvem, jogos e soluções de algoritmos.',
-    cta: 'Ver GitHub',
+    cta: 'Ver no GitHub',
+    showcase: 'Também mantenho um playground com projetos e templates focados em front end, feitos com IA.',
+    world: {
+      label: 'Mapa 3D interativo do meu playground de front end',
+      play: 'Clique para jogar',
+      playHint: 'Ande até um projeto para abrir',
+      move: 'mover',
+      open: 'abrir projeto',
+      exit: 'sair',
+      or: 'ou',
+      hint: 'Pressione E ou clique para abrir',
+      loading: 'Carregando o mundo 3D',
+      listView: 'Ver em lista',
+      worldView: 'Ver mapa 3D',
+      listTitle: 'Playground',
+      clawdTitle: 'Claude Code',
+      clawd: 'Os projetos e templates deste playground foram feitos com IA, usando o Claude Code.',
+      madeWith: 'Feito com IA usando o Claude Code',
+    },
   },
   skills: {
     title: 'Skills e ferramentas',
@@ -345,22 +385,23 @@ const es: Dict = {
     location: 'Passo Fundo, RS, Brasil',
     role: 'Desarrollador de Software en Stara',
     tagline:
-      'Trabajo con telemetría de maquinaria agrícola: portales web, apps móviles, microservicios e infraestructura en AWS. También estudio Ciencias de la Computación en la UPF.',
+      'Desarrollador enfocado en backend, microservicios y nube, principalmente en AWS. En Stara construyo los servicios detrás de la telemetría de las máquinas agrícolas con Node.js, NestJS y Terraform. También estudio Ciencias de la Computación en la UPF.',
     ctaContact: 'Contactar',
     resume: 'Descargar currículum',
   },
   about: {
     title: 'Sobre mí',
     paragraphs: [
-      'Soy desarrollador de software en Passo Fundo, en el sur de Brasil. Desde 2023 estoy en Stara S/A, uno de los mayores fabricantes de maquinaria agrícola del país, donde empecé como pasante y hoy trabajo en los proyectos de telemetría.',
-      'En el día a día me muevo entre apps multiplataforma en Flutter, APIs en Node.js y TypeScript e infraestructura en AWS con Terraform. Me importa el código legible y los sistemas fáciles de mantener.',
+      'Soy desarrollador de software en Passo Fundo, en el sur de Brasil. Desde 2023 estoy en Stara S/A, uno de los mayores fabricantes de maquinaria agrícola del país, donde empecé como pasante y hoy trabajo principalmente en el backend de los proyectos de telemetría.',
+      'Mi enfoque es el backend: microservicios y APIs en Node.js, NestJS y TypeScript corriendo en la nube, principalmente en AWS. En el día a día trabajo con EC2, ECS, Lambda, SQS y otros servicios de AWS, con la infraestructura escrita en Terraform. Cuando el proyecto lo pide, también desarrollo apps en Flutter. Me importa el código legible y los sistemas fáciles de mantener.',
       'Fuera del trabajo me gustan los algoritmos: participé en la Maratón de Programación de la SBC en 2025 y 2026 y fui ayudante de Estructuras de Datos II en la UPF.',
     ],
     facts: [
       { label: 'Ubicación', value: 'Passo Fundo, RS, Brasil' },
       { label: 'Actualmente', value: 'Desarrollador de Software, Stara' },
       { label: 'Formación', value: 'Ciencias de la Computación, UPF' },
-      { label: 'Enfoque', value: 'Node.js, NestJS, AWS, Flutter' },
+      { label: 'Enfoque', value: 'Backend, microservicios, AWS' },
+      { label: 'Stack', value: 'Node.js, NestJS, TypeScript, Terraform' },
       { label: 'Intereses', value: 'Algoritmos, programación competitiva' },
     ],
   },
@@ -376,8 +417,19 @@ const es: Dict = {
         logo: 'stara',
         current: true,
         description:
-          'Trabajo en los proyectos de telemetría de Stara, creando software que convierte los datos de las máquinas agrícolas en información útil, desde portales web y apps hasta integraciones en la nube con empresas internacionales.',
+          'Trabajo en los proyectos de telemetría de Stara, principalmente en el backend: microservicios e integraciones en la nube en AWS que convierten los datos de las máquinas agrícolas en información útil, además del portal web y las apps.',
         highlights: [
+          {
+            logo: 'aws',
+            title: 'Microservicios en AWS',
+            text: 'Microservicios en Node.js y NestJS corriendo en AWS, usando servicios como EC2, ECS, Lambda y SQS, con la infraestructura en Terraform.',
+            chips: ['EC2', 'ECS', 'Lambda', 'SQS', 'Terraform'],
+          },
+          {
+            logo: 'usa',
+            title: 'Integraciones internacionales',
+            text: 'Construí un microservicio en la nube que integra la telemetría de Stara con empresas internacionales.',
+          },
           {
             logo: 'telemetry',
             title: 'Portal de Telemetría',
@@ -389,18 +441,8 @@ const es: Dict = {
             text: 'Participé en el desarrollo de apps de Stara, como la App de Telemetría, Valor Stara, Pulverização (pulverización) y Distribuição (distribución).',
             chips: ['App de Telemetría', 'Valor Stara', 'Pulverização', 'Distribuição'],
           },
-          {
-            logo: 'usa',
-            title: 'Integraciones internacionales',
-            text: 'Construí un microservicio en la nube que integra la telemetría de Stara con empresas internacionales.',
-          },
-          {
-            logo: 'aws',
-            title: 'Microservicios en AWS',
-            text: 'Desarrollé otros microservicios en Node.js sobre AWS.',
-          },
         ],
-        tags: ['Telemetría', 'Microservicios', 'Flutter', 'Node.js', 'TypeScript', 'AWS'],
+        tags: ['Node.js', 'NestJS', 'TypeScript', 'AWS', 'Terraform', 'Microservicios', 'Telemetría', 'Flutter'],
       },
       {
         company: 'Stara S/A',
@@ -459,7 +501,25 @@ const es: Dict = {
   projects: {
     title: 'Proyectos',
     text: 'Mis proyectos personales y académicos están en GitHub: apps móviles, APIs, infraestructura en la nube, juegos y soluciones de algoritmos.',
-    cta: 'Ver GitHub',
+    cta: 'Ver en GitHub',
+    showcase: 'También mantengo un playground con proyectos y plantillas enfocados en front end, hechos con IA.',
+    world: {
+      label: 'Mapa 3D interactivo de mi playground de front end',
+      play: 'Haz clic para jugar',
+      playHint: 'Camina hasta un proyecto para abrirlo',
+      move: 'mover',
+      open: 'abrir proyecto',
+      exit: 'salir',
+      or: 'o',
+      hint: 'Pulsa E o haz clic para abrir',
+      loading: 'Cargando el mundo 3D',
+      listView: 'Ver en lista',
+      worldView: 'Ver mapa 3D',
+      listTitle: 'Playground',
+      clawdTitle: 'Claude Code',
+      clawd: 'Los proyectos y plantillas de este playground fueron hechos con IA, usando Claude Code.',
+      madeWith: 'Hecho con IA usando Claude Code',
+    },
   },
   skills: {
     title: 'Skills y herramientas',
