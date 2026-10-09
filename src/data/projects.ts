@@ -33,7 +33,7 @@ export const projects: Project[] = [
     color: '#c9825a',
   },
   {
-    name: 'Viagem',
+    name: 'WeGoTravel',
     description: {
       pt: 'App em Flutter para viagens em grupo: roteiro, gastos, comprovantes e mural de fotos.',
       en: 'Flutter app for group trips: itinerary, expenses, receipts and a photo wall.',
@@ -41,5 +41,15 @@ export const projects: Project[] = [
     },
     url: 'https://vacation-itinerary-fawn.vercel.app',
     color: '#1fa39a',
+  },
+  {
+    name: "Rubik's Cube",
+    description: {
+      pt: 'Cubo mágico 3D interativo feito com Three.js, com cronômetro e um tutorial passo a passo pelo método das camadas.',
+      en: "Interactive 3D Rubik's cube built with Three.js, with a timer and a step by step layer by layer tutorial.",
+      es: 'Cubo de Rubik 3D interactivo hecho con Three.js, con cronómetro y un tutorial paso a paso por el método de capas.',
+    },
+    url: 'https://rubik-s-cube-seven.vercel.app',
+    color: '#d94a5c',
   },
 ]

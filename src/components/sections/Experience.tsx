@@ -1,9 +1,16 @@
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useInView, useScroll, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import Reveal from '../effects/Reveal'
 import LogoTile from '../LogoTile'
 import SectionTitle from '../SectionTitle'
+
+// Lights up once the timeline fill reaches it (and goes dark again when scrolling back up).
+function TimelineDot() {
+  const ref = useRef<HTMLSpanElement>(null)
+  const lit = useInView(ref, { margin: '0px 0px -40% 0px' })
+  return <span ref={ref} className={`timeline-dot ${lit ? 'is-lit' : ''}`} aria-hidden="true" />
+}
 
 export default function Experience() {
   const { t } = useLanguage()
@@ -24,7 +31,7 @@ export default function Experience() {
 
           {t.experience.items.map((job, i) => (
             <li key={job.company + job.role} className={`timeline-item ${job.current ? 'is-current' : ''}`}>
-              <span className="timeline-dot" aria-hidden="true" />
+              <TimelineDot />
               <Reveal delay={i * 0.05}>
                 <article className="card exp-card">
                   <header className="exp-head">

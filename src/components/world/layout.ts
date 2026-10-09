@@ -18,10 +18,13 @@ export interface PlacedProject extends Project {
 
 export function placeProjects(list: Project[]): PlacedProject[] {
   const autoCount = list.filter((p) => !p.position).length
+  // With an even count one project would land right in front of the camera, cut off at the
+  // bottom edge, so the ring is turned half a step and they sit on the diagonals instead.
+  const start = autoCount % 2 === 0 ? START_ANGLE + Math.PI / autoCount : START_ANGLE
   let k = 0
   return list.map((p) => {
     if (p.position) return { ...p, pos: p.position }
-    const angle = START_ANGLE + (k++ / autoCount) * Math.PI * 2
+    const angle = start + (k++ / autoCount) * Math.PI * 2
     return { ...p, pos: [Math.cos(angle) * RING_RADIUS, Math.sin(angle) * RING_RADIUS] }
   })
 }

@@ -30,6 +30,78 @@
   opacity: 0.55;
 }
 
+/* On load a single ring of accent dots ripples out from behind the name. */
+@property --wave {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+.hero-dots-wave {
+  --wave: 0px;
+  background-image: radial-gradient(var(--accent) 1.4px, transparent 1.7px);
+  opacity: 0;
+  mask-image: radial-gradient(circle at 22% 48%, transparent calc(var(--wave) - 120px), #000 var(--wave), transparent calc(var(--wave) + 60px));
+  -webkit-mask-image: radial-gradient(circle at 22% 48%, transparent calc(var(--wave) - 120px), #000 var(--wave), transparent calc(var(--wave) + 60px));
+  animation: hero-wave 3.4s 0.45s ease-out both;
+}
+@keyframes hero-wave {
+  0% {
+    --wave: 0px;
+    opacity: 0;
+  }
+  10%,
+  55% {
+    opacity: 0.85;
+  }
+  100% {
+    --wave: 1400px;
+    opacity: 0;
+  }
+}
+
+/* Small scroll cue at the bottom of the hero: a dot sliding down a thin line. */
+.hero-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transition: opacity 0.4s;
+}
+.hero-cue.is-hidden {
+  opacity: 0;
+}
+.hero-cue-track {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 44px;
+  overflow: hidden;
+  background: var(--border-strong);
+  animation: fade-in 1s 1.4s both;
+}
+.hero-cue-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 14px;
+  background: var(--accent);
+  animation: hero-cue 2.2s 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes hero-cue {
+  0% {
+    transform: translateY(-14px);
+  }
+  70%,
+  100% {
+    transform: translateY(44px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 .hero-inner {
   position: relative;
   display: grid;
@@ -56,6 +128,19 @@
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.045em;
+}
+.hero-word {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.04em 0.02em 0.1em;
+  margin: -0.04em -0.02em -0.1em;
+  vertical-align: top;
+}
+.hero-word + .hero-word {
+  margin-left: 0.2em;
+}
+.hero-letter {
+  display: inline-block;
 }
 .hero-role {
   margin-top: 18px;
@@ -113,6 +198,14 @@
 .section-num {
   font-size: 13px;
   color: var(--accent);
+}
+.section-rule {
+  flex: 1;
+  align-self: center;
+  height: 1px;
+  margin-left: 10px;
+  transform-origin: left;
+  background: linear-gradient(to right, var(--border-strong), transparent);
 }
 .section-title {
   font-size: clamp(30px, 4vw, 40px);
@@ -189,11 +282,36 @@
   border-radius: 50%;
   background: var(--bg);
   border: 1.5px solid var(--border-strong);
+  transition: border-color 0.4s, transform 0.4s var(--ease);
+}
+.timeline-dot.is-lit {
+  border-color: var(--accent);
+  transform: scale(1.1);
 }
 .timeline-item.is-current .timeline-dot {
   border-color: var(--accent);
   background: var(--accent);
   box-shadow: 0 0 0 4px var(--accent-soft);
+}
+/* The current job's dot sends out a slow, faint pulse. */
+.timeline-item.is-current .timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  animation: dot-pulse 2.6s ease-out infinite;
+}
+@keyframes dot-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
 
 .exp-card {
@@ -421,6 +539,10 @@
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+/* The 3D canvas fades in once Three.js has loaded. */
+.world canvas {
+  animation: fade-in 0.8s var(--ease) both;
+}
 .world-placeholder {
   display: grid;
   place-items: center;
@@ -641,16 +763,7 @@ kbd {
 .project-item:hover strong {
   color: var(--accent);
 }
-.project-item:hover .project-list-note {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  font-size: 13px;
-  color: var(--text-faint);
-}
-.project-arrow {
+.project-item:hover .project-arrow {
   color: var(--text);
   transform: translate(2px, -2px);
 }
@@ -770,6 +883,9 @@ kbd {
   .hero-photo {
     order: -1;
     width: 140px;
+  }
+  .hero-cue {
+    display: none;
   }
   .section {
     padding: 80px 0;

@@ -16,7 +16,7 @@ export default function Footer() {
             </a>
           ))}
           <button
-            className="icon-btn"
+            className="icon-btn to-top"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label={t.footer.top}
             title={t.footer.top}

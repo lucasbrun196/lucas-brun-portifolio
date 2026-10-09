@@ -189,8 +189,25 @@ main {
   transform: translateY(1px);
 }
 .btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--text);
   color: var(--bg);
+}
+/* A soft sheen sweeps across the primary button on hover. */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.26) 50%, transparent 65%);
+  transform: translateX(-120%);
+}
+.btn-primary:hover::after {
+  transform: translateX(120%);
+  transition: transform 0.75s var(--ease);
 }
 .btn-primary:hover {
   background: var(--accent);
@@ -270,6 +287,25 @@ main {
   border-color: var(--border-strong);
 }
 .card:hover::before {
+  opacity: 1;
+}
+/* The border picks up the same light near the pointer. */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 60%, transparent), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  transition: opacity 0.3s;
+}
+.card:hover::after {
   opacity: 1;
 }
 .card > * {
@@ -460,6 +496,12 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+.to-top svg {
+  transition: transform 0.25s var(--ease);
+}
+.to-top:hover svg {
+  transform: translateY(-2px);
 }
 .footer-copy {
   font-size: 12.5px;
